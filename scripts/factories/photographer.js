@@ -11,6 +11,10 @@ function photographerFactory(data) {
         h2.textContent = name;
         article.appendChild(img);
         article.appendChild(h2);
+        // const newPage = document.querySelector('article');
+        // newPage.addEventListener('click', function () {
+        // alert('Je suis un YANKEE')
+        // })
         return (article);
     }
     return { name, picture, getUserCardDOM }
