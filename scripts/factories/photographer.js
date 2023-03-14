@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait } = data;
+    const { name, portrait, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -9,12 +9,12 @@ function photographerFactory(data) {
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        // const newPage = document.querySelector('article');
-        // newPage.addEventListener('click', function () {
-        // alert('Je suis un YANKEE')
-        // })
+        const ancre = document.createElement( 'a' );
+        ancre.href = "photographer.html?id=" + id;
+        article.appendChild(ancre);
+        ancre.appendChild(img);
+        ancre.appendChild(h2);
+      
         return (article);
     }
     return { name, picture, getUserCardDOM }
