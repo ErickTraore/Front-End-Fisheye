@@ -18,4 +18,14 @@ function photographerFactory(data) {
         return (article);
     }
     return { name, picture, getUserCardDOM }
+
+    
+    function getPhotographerProfil() {
+        const profi = document.createElement("profi");
+        profi.classList.add('photographer__profile');
+        prof.appendChild(profi);
+      
+        return (profi);
+    }
+    return { getPhotographerProfil }
 }
