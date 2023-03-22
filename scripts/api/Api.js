@@ -10,7 +10,7 @@ export default class Api {
     async get() {
         return fetch(this._url)
             .then(res => res.json())
-            .then(data => (data.photographers))
+            .then(data => data)
             .catch(err => console.error('an error occurs', err))
     }
 }
