@@ -34,20 +34,7 @@ console.log(id)
             // tableImages.push(dataMedia.image)
         };
         });
-        // const dataName = photographerName;
-        // console.log(tableImages);
-        // tableImages.forEach((tableImage) => {
-        //         // console.log('tableImage', tableImage)
-        //         const mediaModel = mediaFactory(photographers);
-        //     console.log(tableImage);
-        //     // console.log(dataName);
-        //     // console.log(mediaModel);
-
-        //          mediaModel.getUserMediaDOM(dataMedia);
-        //     });
-
-        // const mediaModel = mediaFactory(tableImages, id, dataName);
-        // mediaModel.getUserMediaDOM(dataMedia);
+      
         }
     async function init() {
         // Récupère les datas des photographes
