@@ -15,13 +15,19 @@
         <div class="photographer">
           <div class="photographer__profil"> </div>
           <div class="photographer__trier">
-            <p>Trier par</p> 
+              <form action="#" name="formPhotographer" id = "idPhotographer">
+                <label>Trier par:</label>
+                <select class="photographer__trier__select" id="selectBox">
+                    <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
+                    <option class="photographer__trier__select__option" value="date">Date</option>
+                    <option class="photographer__trier__select__option" value="title">Titre</option>
+                </select>
+              </form>
           </div>
           <div class="photographer__media"> </div>
-
         </div>
-
       </div>
+
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -38,7 +44,7 @@
 				</form>
 			</div>
 		</div>
-
+  
     <script src="scripts/pages/photographer.js" type="module"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/profil.js"></script>
