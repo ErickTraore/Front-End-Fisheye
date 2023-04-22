@@ -1,5 +1,6 @@
 import Api from '../api/Api.js';
 const tableMedias = [];
+const lightbox = document.querySelector('#lightbox');
 let totalLikes = 0;
 
 let photographerName = '';
@@ -38,9 +39,9 @@ async function getData () {
     photographerName,
     tableMedias,
     totalLikes,
-    // data,
   };
 }
+
 
 // Création de la fonction de trie
 function compareValues (key, order = 'asc') {
@@ -96,6 +97,36 @@ async function init () {
     const like = media.querySelector(
       '.photographer__media__card__title__icone__number'
     );
+    const img = media.querySelector (
+      '.photographer__media__card__img'
+    );
+    img.addEventListener('click', ()=>{
+      lightbox.innerHTML = `<img src="${img.src}">`
+      console.log("Yankee");
+      console.log(lightbox.innerHTML);
+      let eTableMedias = tableMedias[Symbol.iterator](tableMedias);
+      console.log(medias)
+      console.log(tableMedias)
+      var arr = tableMedias;
+      var eArr = arr[Symbol.iterator]();
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      console.log(eArr.next().value); // w
+      // console.log(eArr.next().value); // y
+      // console.log(eArr.next().value); // k
+      // console.log(eArr.next().value); // o
+      // console.log(eArr.next().value); // p
+
+    })
     // créons une condition pour autoriser uniquement un seul like.
     let isLiked = false;
 

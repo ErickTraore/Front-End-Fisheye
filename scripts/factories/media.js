@@ -1,13 +1,15 @@
 function mediaFactory (photographerName, data, id ) {
   const image = data.image;
+  const title = data.title;
   console.log (data);
-  let i = 2;
   dataLikes = data.likes;
   const mediaName = photographerName.replaceAll (' ', '-');
   const picture_1 = `assets/images/samplePhotos/${mediaName}/${image}`;
   const picture_2 = `assets/images/samplePhotos/${mediaName}`;
   const picture_3 = `assets/icons/vector.png`;
 
+  console.log (photographerName);
+  console.log (mediaName);
   console.log (picture_1);
   console.log (picture_2);
   console.log (picture_3);
@@ -18,42 +20,15 @@ function mediaFactory (photographerName, data, id ) {
   console.log (photographerName);
   console.log (mediaName);
   console.log (image);
-  // newImage = image.replaceAll ('_', ' ');
-  // console.log (newImage);
-  // const words = newImage.split (' ');
-  // console.log (words);
-  // const nb = words.length;
-  // console.log (nb);
-
-  
-
-  // function removeItem (arr, value) {
-  //   var i = 0;
-  //   while (i < arr.length) {
-  //     if (arr[i] === value) {
-  //       arr.splice (i, 1);
-  //     } else {
-  //       ++i;
-  //     }
-  //   }
-  //   return arr;
-  // }
-  // wordDeletet = words[nb - 1];
-
-  // nexArray = removeItem (words, wordDeletet);
-
+ 
   function getUserMediaDOM () {
-
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
 
-    var divPresent = document.createElement ('a');
+    var divPresent = document.createElement ('div');
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
-    divPresent.setAttribute ('href', "diapo.html?id="+id+"&url_1="+a+"&url_2="+b);
-    // &+'url_2='+ picture_2&+'url_3='+ picture_3
-
     photographersMedia.appendChild (divPresent);
 
     console.log (type);
@@ -98,7 +73,6 @@ function mediaFactory (photographerName, data, id ) {
     picture_1,
     picture_2,
     image,
-    // newImage,
     type,
     dataLikes,
     getUserMediaDOM,

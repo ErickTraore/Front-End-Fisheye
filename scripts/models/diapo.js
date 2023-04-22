@@ -1,13 +1,13 @@
-class Media {
+class diapo {
     constructor(data) {
-       this._url = data.url
-       this._image = data.image
-    }
-  
-    get image() {
-        return './assets/images/samplePhotos/'+ this._url + '/' +this._image
-    }
-    get url() {
-        return this._url
-    }
-}
+        this._title = data.title
+        this._image = data.image
+     }
+   
+     get image() {
+         return './assets/images/samplePhotos/'+ this._name + '/' +this._image
+     }
+     get title() {
+         return this._title
+     }
+ }
