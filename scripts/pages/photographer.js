@@ -1,10 +1,13 @@
 import Api from '../api/Api.js';
 const tableMedias = [];
-const lightbox = document.querySelector('#lightbox');
+const lightbox = document.querySelector ('#lightbox');
+let slides = document.querySelector (".slides");
 let totalLikes = 0;
+let numIndex = 0;
+let testPicture = '';
 
 let photographerName = '';
-const totalHtml = document.querySelector('.total-likes');
+const totalHtml = document.querySelector ('.total-likes');
 
 // Récupération dynamique de l'id de la page
 const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
@@ -42,7 +45,6 @@ async function getData () {
   };
 }
 
-
 // Création de la fonction de trie
 function compareValues (key, order = 'asc') {
   return function innerSort (a, b) {
@@ -74,11 +76,7 @@ select.addEventListener ('change', event => {
 async function displayData () {
   tableMedias.forEach (tableMedia => {
     // let numItem = y++;
-    const mediaTitleModel = mediaFactory (
-      photographerName,
-      tableMedia,
-      id
-    );
+    const mediaTitleModel = mediaFactory (photographerName, tableMedia, id);
     mediaTitleModel.getUserMediaDOM (photographerName, tableMedia, totalLikes);
   });
 }
@@ -94,58 +92,61 @@ async function init () {
     const heart = media.querySelector (
       '.photographer__media__card__title__icone__heart'
     );
-    const like = media.querySelector(
+    const like = media.querySelector (
       '.photographer__media__card__title__icone__number'
     );
-    const img = media.querySelector (
-      '.photographer__media__card__img'
-    );
-    img.addEventListener('click', ()=>{
-      lightbox.innerHTML = `<img src="${img.src}">`
-      console.log("Yankee");
-      console.log(lightbox.innerHTML);
-      let eTableMedias = tableMedias[Symbol.iterator](tableMedias);
-      console.log(medias)
-      console.log(tableMedias)
-      var arr = tableMedias;
-      var eArr = arr[Symbol.iterator]();
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      console.log(eArr.next().value); // w
-      // console.log(eArr.next().value); // y
-      // console.log(eArr.next().value); // k
-      // console.log(eArr.next().value); // o
-      // console.log(eArr.next().value); // p
+    const img = media.querySelector ('.photographer__media__card__img');
+    const mediaName = photographerName.replaceAll (' ', '-');
+    
+    function getIndex (data) {
+        tableMedias.forEach((tableMedia, index) =>{  
+        const image = tableMedia.image;
+        const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
+        testPicture = `http://127.0.0.1:5502/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
+        if (img.src == testPicture) {
+          numIndex = parseInt(index) + data;
+        }
+      })
+      return numIndex
+    }
+    function displayIndex (id) {
+      let tableMedia = tableMedias[id]
+      const image = tableMedia.image;
+      const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
+      testPicture = `http://127.0.0.1:5502/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
+      
+      let divIm = document.createElement('div');
+      divIm.classList.add ('slides__container');
+      slides.appendChild (divIm);
 
-    })
+      var divImg = document.createElement ('img');
+      divImg.setAttribute ('src', testPicture);
+      divImg.classList.add ('slides__container__image');
+      divIm.appendChild (divImg);
+    }
+    img.addEventListener ('click', () => {
+      let indexNum = getIndex (0);
+      displayIndex (indexNum);
+    });
+
     // créons une condition pour autoriser uniquement un seul like.
     let isLiked = false;
 
-    heart.addEventListener('click', ()=>{
-    let numLike = parseInt(like.textContent)
-    if(!isLiked){
-      numLike++;
-      totalLikes++;
-      isLiked = true;
-    }
-    else{
-      numLike--;
-      totalLikes--;
-      isLiked = false;
-    }
-    like.innerHTML = numLike;
-    totalHtml.innerHTML = totalLikes;
-    console.log(numLike);
-    })
+    heart.addEventListener ('click', () => {
+      let numLike = parseInt (like.textContent);
+      if (!isLiked) {
+        numLike++;
+        totalLikes++;
+        isLiked = true;
+      } else {
+        numLike--;
+        totalLikes--;
+        isLiked = false;
+      }
+      like.innerHTML = numLike;
+      totalHtml.innerHTML = totalLikes;
+      console.log (numLike);
+    });
   });
 }
 init ();
