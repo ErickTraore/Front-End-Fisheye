@@ -12,46 +12,43 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-        <div class="photographer">
-          <div class="photographer__profil"> </div>
-          <div class="photographer__trier">
-              <form action="#" name="formPhotographer" id = "idPhotographer">
-                <label>Trier par:</label>
-                <select class="photographer__trier__select" id="selectBox">
-                    <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
-                    <option class="photographer__trier__select__option" value="date">Date</option>
-                    <option class="photographer__trier__select__option" value="title">Titre</option>
-                </select>
-              </form>
-          </div>
-          <div class="photographer__media"> </div>
+      <div class="photographer">
+        <div class="photographer__profil"> 
+        </div>
+        <div class="photographer__trier">
+            <form action="#" name="formPhotographer" id = "idPhotographer">
+              <label>Trier par:</label>
+              <select class="photographer__trier__select" id="selectBox">
+                  <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
+                  <option class="photographer__trier__select__option" value="date">Date</option>
+                  <option class="photographer__trier__select__option" value="title">Titre</option>
+              </select>
+            </form>
+        </div>
+        <div class="photographer__media"> 
         </div>
         <div class="total-likes"> 
         </div>
       </div>
+      <div id="contact__modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </header>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input />
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
+      <div class="lightbox">
+      </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-  <div id="lightbox">
-    lightbox
-  </div>
-  <div class="slides">
-    slides
-  </div>
-  <p id="demo"></p>
+
 
     <script src="scripts/pages/photographer.js" type="module"></script>
     <script src="scripts/factories/photographer.js"></script>

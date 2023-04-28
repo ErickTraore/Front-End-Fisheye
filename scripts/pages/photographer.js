@@ -1,9 +1,11 @@
 import Api from '../api/Api.js';
 const tableMedias = [];
-const lightbox = document.querySelector ('#lightbox');
-let slides = document.querySelector (".slides");
+// const lightboxcontent = document.querySelector ('#lightbox__content');
+let lightboxmodal = document.querySelector ('.lightbox');
+let indexNum = 0;
 let totalLikes = 0;
 let numIndex = 0;
+let myId = 0;
 let testPicture = '';
 
 let photographerName = '';
@@ -97,37 +99,104 @@ async function init () {
     );
     const img = media.querySelector ('.photographer__media__card__img');
     const mediaName = photographerName.replaceAll (' ', '-');
-    
+  
     function getIndex (data) {
-        tableMedias.forEach((tableMedia, index) =>{  
+      console.log ('data =', data);
+
+      tableMedias.forEach ((tableMedia, index) => {
+        let dataId = index;
         const image = tableMedia.image;
         const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
-        testPicture = `http://127.0.0.1:5502/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
+        testPicture = `http://127.0.0.1:5501/assets/images/samplePhotos/${mediaName}/${image}`;
+        console.log ('picture =', picture);
+        console.log ('img.src=', img.src);
+
         if (img.src == testPicture) {
-          numIndex = parseInt(index) + data;
+          console.log ('img.src =', img.src);
+          console.log ('dataId =', dataId);
+          numIndex = parseInt (dataId) + data;
         }
-      })
-      return numIndex
+      });
+      console.log ('numIndex =', numIndex);
+      return numIndex;
     }
+
     function displayIndex (id) {
-      let tableMedia = tableMedias[id]
+      let tableMedia = tableMedias[id];
       const image = tableMedia.image;
       const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
-      testPicture = `http://127.0.0.1:5502/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
-      
-      let divIm = document.createElement('div');
-      divIm.classList.add ('slides__container');
-      slides.appendChild (divIm);
+      testPicture = `http://127.0.0.1:5501/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
 
-      var divImg = document.createElement ('img');
-      divImg.setAttribute ('src', testPicture);
-      divImg.classList.add ('slides__container__image');
+      let divIm = document.createElement ('div');
+      divIm.classList.add ('lightbox__content');
+      lightboxmodal.appendChild (divIm);
+
+      let divImg = document.createElement ('img');
+      divImg.classList.add ('lightbox__content__image');
+      divImg.setAttribute ('src', picture);
       divIm.appendChild (divImg);
+
+      let divNav = document.createElement ('div');
+      divNav.classList.add ('lightbox__nav');
+      divIm.appendChild (divNav);
+
+      let divLeft = document.createElement ('div');
+      divLeft.classList.add ('lightbox__nav__fleche-gauche');
+      divNav.appendChild (divLeft);
+      divLeft.innerHTML = '&larr;';
+
+      let divRigth = document.createElement ('div');
+      divRigth.classList.add ('lightbox__nav__fleche-droite');
+      divNav.appendChild (divRigth);
+      divRigth.innerHTML = '&rarr;';
+
+      const arrowleft = document.querySelector ('.lightbox__nav__fleche-gauche');
+      const arrowright = document.querySelector ('.lightbox__nav__fleche-droite');
+      arrowleft.addEventListener ('click', () => {
+        selectleft ();
+      });
+      arrowright.addEventListener ('click', () => {
+        selectright ();
+      });
+    
     }
     img.addEventListener ('click', () => {
-      let indexNum = getIndex (0);
+      document.querySelector ('.lightbox').innerHTML = '';
+      indexNum = getIndex (0);
       displayIndex (indexNum);
+    
     });
+
+    function selectleft () {
+      if (indexNum === 0){
+        indexNum = tableMedias.length - 1
+      }
+      else{
+        indexNum = indexNum - 1
+
+      }
+      console.log(indexNum);
+      document.querySelector ('.lightbox').innerHTML = '';
+      displayIndex(indexNum);
+    }
+    function selectright () {
+      if (indexNum === tableMedias.length - 1) {
+        indexNum = 0
+      }
+      else{
+        indexNum = indexNum + 1
+
+      }
+      console.log(indexNum);
+      document.querySelector ('.lightbox').innerHTML = '';
+      displayIndex(indexNum);
+    }
+
+   
+
+    // selectrigth.addEventListener ('click', () => {
+
+    // });
 
     // créons une condition pour autoriser uniquement un seul like.
     let isLiked = false;

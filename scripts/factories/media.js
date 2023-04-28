@@ -26,6 +26,8 @@ function mediaFactory (photographerName, data, id ) {
     const photographersMedia = document.querySelector ('.photographer__media');
 
     var divPresent = document.createElement ('div');
+    divPresent.classList.add ('box');
+
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
