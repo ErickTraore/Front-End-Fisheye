@@ -1,6 +1,6 @@
-function displayModal() {
+function displayMediaModal() {
     const modal = document.getElementById("contact__modal");
-	modal.style.display = "block";
+	modal.style.display = "none";
     // fermeture de la div-profil.
     const divprofil = document.querySelector(".photographer__profil");
     divprofil.style.display = "none";
@@ -12,10 +12,10 @@ function displayModal() {
     divmedia.style.display = "none";
     // fermeture de la div-lightbox.
     const divlightbox = document.querySelector(".lightbox");
-    divlightbox.style.display = "none";
+    divlightbox.style.display = "flex";
 } 
 
-function closeModal() {
+function closeMediaModal() {
     const modal = document.getElementById("contact__modal");
     modal.style.display = "none";
     // fermeture de la div-profil.

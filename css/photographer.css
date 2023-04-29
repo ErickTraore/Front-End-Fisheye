@@ -147,6 +147,7 @@ form input {
 .photographer__trier{
     width: auto;
     height: auto;
+    display: flex;
 }
 .photographer__trier__select{
     background-color: #901C1C !important;
@@ -302,7 +303,6 @@ form input {
     font-weight: bolder;
     border: solid 3px red;
     position: absolute;
-    /* top: 10%; */
     z-index: 1;
 }
 .lightbox__nav__fleche-gauche{
@@ -315,8 +315,42 @@ form input {
 .lightbox__nav__fleche-droite{
     width: 7vh;
     height: auto;
-    display: flex;
+    display: flex-end;
     justify-content: center;
     flex-direction: row-reverse;
     background-color: aqua;
+}
+.lightbox__content{
+    width:  70vh;
+    height: auto; 
+    border: solid 3px blue;
+
+}
+.closeDiaspo{
+    width: 5vh;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    border: solid 3px #DB8876;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    margin-top: 100px;
+}
+.lightbox__close{
+    width: 100%;
+    height: auto;
+    display: flex; 
+    flex-direction: row-reverse;
+    margin-left: -50px;
+}
+.total-likes{
+    width: 100%;
+    height: auto;
+    display: flex; 
+    flex-direction: row-reverse;
+    margin-left: -20px;
+    z-index: 1;
+    top: 20px;
+    position: absolute;
 }

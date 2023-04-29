@@ -10,6 +10,10 @@ let testPicture = '';
 
 let photographerName = '';
 const totalHtml = document.querySelector ('.total-likes');
+// fermeture de la modal-contact.
+const modal = document.getElementById("contact__modal");
+modal.style.display = "none";
+
 
 // Récupération dynamique de l'id de la page
 const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
@@ -77,7 +81,6 @@ select.addEventListener ('change', event => {
 // Afichage des données triées
 async function displayData () {
   tableMedias.forEach (tableMedia => {
-    // let numItem = y++;
     const mediaTitleModel = mediaFactory (photographerName, tableMedia, id);
     mediaTitleModel.getUserMediaDOM (photographerName, tableMedia, totalLikes);
   });
@@ -108,9 +111,12 @@ async function init () {
         const image = tableMedia.image;
         const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
         testPicture = `http://127.0.0.1:5501/assets/images/samplePhotos/${mediaName}/${image}`;
+        const url = [`${image}`];
+        const getFileExtension = url => `.${url.split ('?')[0].split ('.').pop ()}`;
+        const type = getFileExtension (url[0]);
         console.log ('picture =', picture);
         console.log ('img.src=', img.src);
-
+  
         if (img.src == testPicture) {
           console.log ('img.src =', img.src);
           console.log ('dataId =', dataId);
@@ -130,6 +136,17 @@ async function init () {
       let divIm = document.createElement ('div');
       divIm.classList.add ('lightbox__content');
       lightboxmodal.appendChild (divIm);
+
+      let divx = document.createElement ('div');
+      divx.classList.add ('lightbox__close');
+      divIm.appendChild (divx);
+     
+
+      let divClose = document.createElement ('img');
+      divClose.setAttribute ('src', "assets/icons/close.svg");
+      divClose.setAttribute ('onclick', "closeMediaModal()");
+      divClose.setAttribute ('class', "closeDiaspo");
+      divx.appendChild (divClose);
 
       let divImg = document.createElement ('img');
       divImg.classList.add ('lightbox__content__image');
@@ -164,6 +181,7 @@ async function init () {
       document.querySelector ('.lightbox').innerHTML = '';
       indexNum = getIndex (0);
       displayIndex (indexNum);
+      displayMediaModal()
     
     });
 
@@ -192,13 +210,7 @@ async function init () {
       displayIndex(indexNum);
     }
 
-   
 
-    // selectrigth.addEventListener ('click', () => {
-
-    // });
-
-    // créons une condition pour autoriser uniquement un seul like.
     let isLiked = false;
 
     heart.addEventListener ('click', () => {
