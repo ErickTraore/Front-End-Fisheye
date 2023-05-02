@@ -43,8 +43,10 @@ function mediaFactory (photographerName, data, id ) {
     } else {
       var video = document.createElement ('video');
       video.setAttribute ('src', picture_1);
-      video.classList.add ('photographer__media__card__video');
+      video.classList.add ('photographer__media__card__img');
       video.setAttribute ('alt', 'video');
+      video.setAttribute ('autoplay', '');
+      video.setAttribute ('loop', '');
       divPresent.appendChild (video);
     }
     var divTitle = document.createElement ('div');

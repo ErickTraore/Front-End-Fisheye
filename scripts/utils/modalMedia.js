@@ -29,5 +29,5 @@ function closeMediaModal() {
     divmedia.style.display = "flex";
     // fermeture de la div-lightbox.
     const divlightbox = document.querySelector(".lightbox");
-    divlightbox.style.display = "flex";
+    divlightbox.style.display = "none";
 }
