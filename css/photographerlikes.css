@@ -1,0 +1,36 @@
+.photographer__likes {
+    width: 60%;
+    height: auto;
+    display: flex; 
+    flex-direction: row-reverse;
+    position: fixed;
+    bottom: 0px;
+}
+
+.photographer__content {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px;
+    border: solid 3px blue; 
+    border-radius: 25px 25px 0px 0px;
+}
+
+.icone-heart{
+    width: 20%;
+    height: 5vh;
+    display: flex;  
+    margin-right: 20px;
+}
+.total-likes{
+    width: 100%;
+    height: auto;
+    display: flex; 
+}
+.photographer__name {
+    width: 100%;
+    height: auto;
+    display: flex;  
+    border-radius: 0px 25px 0px 0px;
+}

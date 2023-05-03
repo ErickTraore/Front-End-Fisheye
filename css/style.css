@@ -45,6 +45,11 @@ h1 {
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    width: 10rem;
+    height: 10rem;
+    align-items: center;
+    object-fit: cover;
+    font-size: large;
+    background-size: cover;
+    border-radius: 30rem;
 }

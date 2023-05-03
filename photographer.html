@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographerlikes.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -12,6 +13,31 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
+      <div class="photographer">
+        <div class="photographer__profil"> 
+        </div>
+        <div class="photographer__trier">
+            <form action="#" name="formPhotographer" id = "idPhotographer">
+              <label>Trier par:</label>
+              <select class="photographer__trier__select" id="selectBox">
+                  <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
+                  <option class="photographer__trier__select__option" value="date">Date</option>
+                  <option class="photographer__trier__select__option" value="title">Titre</option>
+              </select>
+            </form>
+        </div>
+        <div class="photographer__media"> 
+        </div>
+        <div class="photographer__likes">
+          <div class="photographer__content">
+            <div class="icone-heart">
+              <img src="assets/icons/vector.png"></img>
+            </div> 
+            <div class="total-likes"></div> 
+            <div class="photographer__name"></div> 
+          </div> 
+        </div>
+      </div>
       <div id="contact__modal">
         <div class="modal">
           <header>
@@ -33,26 +59,7 @@
           </form>
         </div>
       </div>
-      <div class="photographer">
-        <div class="photographer__profil"> 
-        </div>
-        <div class="photographer__trier">
-            <form action="#" name="formPhotographer" id = "idPhotographer">
-              <label>Trier par:</label>
-              <select class="photographer__trier__select" id="selectBox">
-                  <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
-                  <option class="photographer__trier__select__option" value="date">Date</option>
-                  <option class="photographer__trier__select__option" value="title">Titre</option>
-              </select>
-            </form>
-        </div>
-        <div class="photographer__media"> 
-        </div>
-        <div class="total-likes"> 
-        </div>
-      </div>
-
-      <div class="lightbox">
+      <div class="lightbox__modal">
       </div>
     </main>
 
