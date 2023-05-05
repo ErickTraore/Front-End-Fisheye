@@ -105,7 +105,7 @@ async function init () {
         let dataId = index;
         const image = tableMedia.image;
         const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
-        testPicture = `http://127.0.0.1:5501/assets/images/samplePhotos/${mediaName}/${image}`;
+        testPicture = `${window.location.origin}/assets/images/samplePhotos/${mediaName}/${image}`;
         const url = [`${image}`];
         const getFileExtension = url =>
           `.${url.split ('?')[0].split ('.').pop ()}`;
