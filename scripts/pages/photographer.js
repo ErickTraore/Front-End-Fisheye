@@ -25,6 +25,7 @@ async function getData () {
   data.photographers.forEach (dataPhotographer => {
     if (dataPhotographer.id === id) {
       photographerName = dataPhotographer.name;
+
       const profilModel = profilFactory (dataPhotographer);
       profilModel.getUserProfilDOM (dataPhotographer);
     }
@@ -44,6 +45,7 @@ async function getData () {
   console.log (totalLikes);
   totalHtml.innerHTML = totalLikes;
   document.querySelector ('.photographer__name').innerHTML = photographerName;
+  document.querySelector ('.contactName').innerHTML = photographerName;
 
   return {
     photographerName,

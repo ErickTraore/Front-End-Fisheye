@@ -13,7 +13,7 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photographer">
+      <div class="photographer__modal">
         <div class="photographer__profil"> 
         </div>
         <div class="photographer__trier">
@@ -42,6 +42,7 @@
         <div class="modal">
           <header>
             <h2>Contactez-moi</h2>
+            <div class="contactName"></div>
             <img src="assets/icons/close.svg" onclick="closeModal()" />
           </header>
           <form
@@ -50,52 +51,71 @@
           action="index.html"
           method="get"
           onsubmit=""
-        >
-        <div
-        class="formData">
-        <label for="first">Prénom</label><br>
-        <input
-          class="text-control"
-          type="text"
-          id="first"
-          name="first"
-        /> <br>
-        <div id="errorFirst">
-        </div> 
-      </div>
-      <div
-        class="formData">
-        <label for="last">Nom</label><br>
-        <input
-          class="text-control"
-          type="text"
-          id="last"
-          name="last"
-        /><br>
-        <div id="errorLast">
-        </div> 
-      </div>
-      <div
-        class="formData">
-        <label for="email">E-mail</label><br>
-        <input
-          class="text-control"
-          type="email"
-          id="email"
-          name="email"
-        /><br> 
-        <div id="errorEmail">
-        </div>  
-      </div>
-            <button class="contact_button">Envoyer</button>
+          >
+            <div
+                class="formData">
+                <label for="first">Prénom:</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+            /> <br>
+                <div id="errorFirst">
+                </div> 
+            </div>
+            <div
+                class="formData">
+                <label for="last">Nom:</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  /><br>
+                <div id="errorLast">
+                </div> 
+            </div>
+            <div class="formData">
+              <label for="email">E-mail:</label><br>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              /><br> 
+              <div id="errorEmail">
+              </div>
+            </div>
+              <div class="formData">
+                <label for="message">Message:</label>
+                <input
+                class="text-control"
+                type="message"
+                id="message"
+                name="message"
+              /><br>
+              <div id="errorMessage">
+              </div> 
+              </div>  
+            <input class="contact_button btn-submit" type="submit" value="Envoyer"/>
           </form>
+        </div>
+      </div>
+      <div class="merci__modal">
+        <div class="modal">
+          <header>
+            <h2>Merci pour votre inscription</h2>
+            <img src="assets/icons/close.svg" onclick="closeMerciModal()" />
+          </header>
+          <button onClick="Javascript:window.open('index.html');">
+            Fermer
+          </button>
         </div>
       </div>
       <div class="lightbox__modal">
       </div>
     </main>
-
-
     <script src="scripts/pages/photographer.js" type="module"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/profil.js"></script>

@@ -1,5 +1,5 @@
 {
-	"photographers": [
+	"photographers":[
 		{
 			"name": "Mimi Keel",
 			"id": 243,
@@ -55,7 +55,7 @@
 			"portrait": "MarcelNikolic.jpg"
 		}
 	],
-	"medias": [
+	"medias":[
 		{
 			"id": 342550,
 			"photographerId": 82,
