@@ -8,13 +8,14 @@
 }
 
 .photographer__content {
-    width: 40%;
-    height: auto;
+    width: 33%;
+    height: 7vh;
     display: flex;
     flex-direction: row;
     padding: 15px 15px;
     border: solid 3px blue; 
     border-radius: 25px 25px 0px 0px;
+    background-color: bisque;
 }
 
 .icone-heart{

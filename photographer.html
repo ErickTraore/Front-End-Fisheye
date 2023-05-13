@@ -13,7 +13,7 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photographer__modal">
+      <div class="photographer__">
         <div class="photographer__profil"> 
         </div>
         <div class="photographer__trier">
@@ -41,9 +41,12 @@
       <div id="contact__modal">
         <div class="modal">
           <header>
+          <div class="contacticone"> 
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </div> 
+         
             <h2>Contactez-moi</h2>
             <div class="contactName"></div>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
           </header>
           <form
           id="myForm"
@@ -105,12 +108,13 @@
       <div class="merci__modal">
         <div class="modal">
           <header>
-            <h2>Merci pour votre inscription</h2>
-            <img src="assets/icons/close.svg" onclick="closeMerciModal()" />
+            <div class="contacticone"> 
+              <img src="assets/icons/close.svg" onclick="closeMerciModal()" />
+            </div>
+            <h3>Merci pour votre inscription</h3>
           </header>
-          <button onClick="Javascript:window.open('index.html');">
-            Fermer
-          </button>
+          <input class="contact_button btn-submit" type="submit" value="Fermer" onClick="Javascript:window.open('index.html');">
+          </input>
         </div>
       </div>
       <div class="lightbox__modal">

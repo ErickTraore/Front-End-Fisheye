@@ -1,16 +1,6 @@
 function displayModal() {
     const modal = document.getElementById("contact__modal");
-	modal.style.display = "flex";
-    // fermeture de la div-profil.
-    const divprofil = document.querySelector(".photographer__profil");
-    divprofil.style.display = "flex";
-    // fermeture de la div-trier.
-    const divtrier = document.querySelector(".photographer__trier");
-    divtrier.style.display = "flex";
-    // fermeture de la div-photographer-media.
-    const divmedia = document.querySelector(".photographer__media");
-    divmedia.style.display = "flex";
-    // fermeture de la div-lightbox.
+  	modal.style.display = "flex";
     const divlightbox = document.querySelector(".lightbox__modal");
     divlightbox.style.display = "none";
     const divMerci = document.querySelector(".merci__modal");
@@ -21,18 +11,6 @@ function displayModal() {
 function closeModal() {
     const modal = document.getElementById("contact__modal");
     modal.style.display = "none";
-    // fermeture de la div-profil.
-    const divprofil = document.querySelector(".photographer__profil");
-    divprofil.style.display = "flex";
-    // fermeture de la div-trier.
-    const divtrier = document.querySelector(".photographer__trier");
-    divtrier.style.display = "flex";
-    // fermeture de la div-photographer-media.
-    const divmedia = document.querySelector(".photographer__media");
-    divmedia.style.display = "flex";
-    // fermeture de la div-lightbox.
-    const divlightbox = document.querySelector(".lightbox__modal");
-    divlightbox.style.display = "flex";
 }
 function closeMerciModal() {
     const divmerciModal = document.querySelector(".merci__modal");
@@ -112,8 +90,6 @@ function addModal(e) {    e.preventDefault();
     console.log('Vos données sont valid');
     console.log('data:', {first, last, email, message});
     const divMerci = document.querySelector(".merci__modal");
-
-
     modalForm.reset();
     closeModal()
     divMerci.style.display = "flex";

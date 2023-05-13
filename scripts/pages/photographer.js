@@ -124,7 +124,9 @@ async function init () {
     }
   function displayIndex (id) {
       let tableMedia = tableMedias[id];
+      console.log(tableMedia);
       const image = tableMedia.image;
+      const titre = tableMedia.title;
       const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
       testPicture = `http://127.0.0.1:5501/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
       const url = [`${image}`];
@@ -135,21 +137,40 @@ async function init () {
       divIm.classList.add ('lightbox__content');
       lightboxmodal.appendChild (divIm);
 
+     
+
+      let divNav = document.createElement ('div');
+      divNav.classList.add ('lightbox__nav');
+      divIm.appendChild (divNav);
+      
       let divx = document.createElement ('div');
       divx.classList.add ('lightbox__close');
-      divIm.appendChild (divx);
+      divNav.appendChild (divx);
+      let divNavigate = document.createElement ('div');
+      divNavigate.classList.add ('lightbox__navigate');
+      divNav.appendChild (divNavigate);
+      let divname = document.createElement ('div');
+      divname.classList.add ('lightbox__name');
+      divNav.appendChild (divname);
+      divname.innerHTML = titre;
+
 
       let divClose = document.createElement ('img');
       divClose.setAttribute ('src', 'assets/icons/close.svg');
       divClose.setAttribute ('onclick', 'closeMediaModal()');
       divClose.setAttribute ('class', 'closeDiaspo');
       divx.appendChild (divClose);
+      
+      let divLeft = document.createElement ('div');
+      divLeft.classList.add ('lightbox__nav__fleche-gauche');
+      divNavigate.appendChild (divLeft);
+      divLeft.innerHTML = '\u3008 ';
 
       if (isImage (type)) {
         let divImg = document.createElement ('img');
         divImg.classList.add ('lightbox__content__image');
         divImg.setAttribute ('src', picture);
-        divIm.appendChild (divImg);
+        divNavigate.appendChild (divImg);
       }
       if (isVideo (type)) {
         let divImg = document.createElement ('video');
@@ -157,21 +178,13 @@ async function init () {
         divImg.setAttribute ('src', picture);
         divImg.setAttribute ('autoplay', '');
         divImg.setAttribute ('loop', '');
-        divIm.appendChild (divImg);
+        divNavigate.appendChild (divImg);
       }
-      let divNav = document.createElement ('div');
-      divNav.classList.add ('lightbox__nav');
-      divIm.appendChild (divNav);
-
-      let divLeft = document.createElement ('div');
-      divLeft.classList.add ('lightbox__nav__fleche-gauche');
-      divNav.appendChild (divLeft);
-      divLeft.innerHTML = '&larr;';
 
       let divRigth = document.createElement ('div');
       divRigth.classList.add ('lightbox__nav__fleche-droite');
-      divNav.appendChild (divRigth);
-      divRigth.innerHTML = '&rarr;';
+      divNavigate.appendChild (divRigth);
+      divRigth.innerHTML = '\u3009';
 
       const arrowleft = document.querySelector (
         '.lightbox__nav__fleche-gauche'
