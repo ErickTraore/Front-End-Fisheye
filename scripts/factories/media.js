@@ -25,12 +25,17 @@ function mediaFactory (photographerName, data, id ) {
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
 
-    var divPresent = document.createElement ('div');
-    divPresent.classList.add ('box');
+    var divPresent = document.createElement ('article');
+    // divPresent.classList.add ('box');
 
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
+
+    // divPresent.setAttribute ('role', "button");
+    // divPresent.setAttribute ('aria-pressed', "true"   );
+    // divPresent.setAttribute ('aria-describedby', 'ouvrir le slider');
+
     photographersMedia.appendChild (divPresent);
 
     console.log (type);
@@ -38,7 +43,8 @@ function mediaFactory (photographerName, data, id ) {
       var img = document.createElement ('img');
       img.setAttribute ('src', picture_1);
       img.classList.add ('photographer__media__card__img');
-      img.setAttribute ('alt', 'image');
+      // img.setAttribute ('role', "button");
+      img.setAttribute ('alt', image);
       divPresent.appendChild (img);
     } else {
       var video = document.createElement ('video');

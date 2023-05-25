@@ -11,6 +11,7 @@ import Api from "../api/Api.js";
         const photographersSection = document.querySelector(".photographer_section");
         console.log('index:photographers',photographers);
         photographers.photographers.forEach((photographer) => {
+            console.log('photographer',photographer);
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);

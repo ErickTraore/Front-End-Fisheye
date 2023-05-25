@@ -1,37 +1,66 @@
+.photographer__container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: auto;    
+    position: absolute;
+}
 .photographer__likes {
-    width: 60%;
+    width: 30%;
     height: auto;
     display: flex; 
-    flex-direction: row-reverse;
-    position: fixed;
-    bottom: 0px;
+    margin: auto auto;
+    align-items: center;
+    justify-content: center; 
 }
 
 .photographer__content {
-    width: 33%;
-    height: 7vh;
+    width: 20%;
+    height: auto;
     display: flex;
-    flex-direction: row;
-    padding: 15px 15px;
-    border: solid 3px blue; 
-    border-radius: 25px 25px 0px 0px;
-    background-color: bisque;
+    justify-content: center; 
+    border: 3px solid #901C1C;
+    background-color: #D3573C;
+    border-radius: 20px 20px 0px 0px;
+    position: fixed;
+    bottom: 0;
+    left: 40%; 
+    align-items: center;
 }
 
 .icone-heart{
     width: 20%;
-    height: 5vh;
-    display: flex;  
-    margin-right: 20px;
+    height: auto;
+    display: flex;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center; 
+
 }
 .total-likes{
-    width: 100%;
+    width: 20%;
     height: auto;
-    display: flex; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
 }
 .photographer__name {
-    width: 100%;
+    width: 60%;
     height: auto;
-    display: flex;  
-    border-radius: 0px 25px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+
+}
+@media screen and (max-width: 600px){
+.photographer__content {
+    width: 50%;
+    left: 25%; 
+    font-size: 14px;
+    padding: 8px;
+    box-sizing: border-box;
+    
+}
+
 }

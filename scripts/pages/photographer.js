@@ -5,14 +5,9 @@ let lightboxmodal = document.querySelector ('.lightbox__modal');
 let indexNum = 0;
 let totalLikes = 0;
 let numIndex = 0;
-let myId = 0;
 let testPicture = '';
-
 let photographerName = '';
 const totalHtml = document.querySelector ('.total-likes');
-// fermeture de la modal-contact.
-const modal = document.getElementById ('contact__modal');
-modal.style.display = 'none';
 
 // Récupération dynamique de l'id de la page
 const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
@@ -21,7 +16,7 @@ const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
 async function getData () {
   const dataApi = new Api ('data/test-photographers.json');
   const data = await dataApi.get ();
-
+        // içi on récupère grace à l'id le nom du photographe afin de projeter son profil dans la page de ce photographe
   data.photographers.forEach (dataPhotographer => {
     if (dataPhotographer.id === id) {
       photographerName = dataPhotographer.name;
@@ -30,7 +25,7 @@ async function getData () {
       profilModel.getUserProfilDOM (dataPhotographer);
     }
   });
-
+        // puis on crée une table comprenant toutes ses photos.(tableMedias)
   data.medias.forEach (dataMedia => {
     if (dataMedia.photographerId === id) {
       tableMedias.push (dataMedia);
@@ -71,35 +66,37 @@ function compareValues (key, order = 'asc') {
     return order === 'desc' ? comparison * -1 : comparison;
   };
 }
+// Afichage des données triées
+async function displayData (data) {
+  data.forEach (tableMedia => {
+    const mediaTitleModel = mediaFactory (photographerName, tableMedia, id);
+    mediaTitleModel.getUserMediaDOM (photographerName, tableMedia, totalLikes);
+  });
+  init ();
+}
 // Exécution de la fonction de trie avec récupération automatique du choix de la sélection .
 const select = document.querySelector ('select');
 select.addEventListener ('change', event => {
   const value = event.target.value;
   tableMedias.sort (compareValues (value));
   document.querySelector ('.photographer__media').innerHTML = '';
-  displayData ();
+  displayData (tableMedias);
+  
 });
 
-// Afichage des données triées
-async function displayData () {
-  tableMedias.forEach (tableMedia => {
-    const mediaTitleModel = mediaFactory (photographerName, tableMedia, id);
-    mediaTitleModel.getUserMediaDOM (photographerName, tableMedia, totalLikes);
-  });
-}
+ // Récupère les datas des photographes
+ const {data} = await getData ();
+ // Afichage des datas du photographe
+ displayData (tableMedias);
 
 async function init () {
-  // Récupère les datas des photographes
-  const {data} = await getData ();
-  // Afichage des datas du photographe
-  displayData (data);
+ 
   // Pour chaque media(carte), identifions le coeur(heart) et son nombre de like(like-number).
   const medias = document.querySelectorAll ('.photographer__media__card');
   medias.forEach (media => {
   const heart = media.querySelector ('.photographer__media__card__title__icone__heart');
   const like = media.querySelector ('.photographer__media__card__title__icone__number');
-  const img = media.querySelector ('.photographer__media__card__img');
-  const video = media.querySelector ('.photographer__media__card__img');
+  
   const mediaName = photographerName.replaceAll (' ', '-');
 
   function getIndex (data) {
@@ -137,8 +134,6 @@ async function init () {
       divIm.classList.add ('lightbox__content');
       lightboxmodal.appendChild (divIm);
 
-     
-
       let divNav = document.createElement ('div');
       divNav.classList.add ('lightbox__nav');
       divIm.appendChild (divNav);
@@ -170,12 +165,14 @@ async function init () {
         let divImg = document.createElement ('img');
         divImg.classList.add ('lightbox__content__image');
         divImg.setAttribute ('src', picture);
+        divImg.setAttribute ('alt', image);
         divNavigate.appendChild (divImg);
       }
       if (isVideo (type)) {
         let divImg = document.createElement ('video');
         divImg.classList.add ('lightbox__content__image');
         divImg.setAttribute ('src', picture);
+        divImg.setAttribute ('alt', image);
         divImg.setAttribute ('autoplay', '');
         divImg.setAttribute ('loop', '');
         divNavigate.appendChild (divImg);
@@ -199,6 +196,10 @@ async function init () {
         selectright ();
       });
     }
+
+    const img = media.querySelector ('.photographer__media__card__img');
+    const video = media.querySelector ('.photographer__media__card__img');
+    
     img.addEventListener ('click', () => {
       document.querySelector ('.lightbox__modal').innerHTML = '';
       indexNum = getIndex (0);
@@ -211,6 +212,22 @@ async function init () {
       displayIndex (indexNum);
       displayMediaModal ();
     });
+
+    // const img = media.querySelector ('.photographer__media__card__img');
+    // const video = media.querySelector ('.photographer__media__card__img');
+    
+    // img.addEventListener ('click', () => {
+    //   document.querySelector ('.lightbox__modal').innerHTML = '';
+    //   indexNum = getIndex (0);
+    //   displayIndex (indexNum);
+    //   displayMediaModal ();
+    // });
+    // video.addEventListener ('click', () => {
+    //   document.querySelector ('.lightbox__modal').innerHTML = '';
+    //   indexNum = getIndex (0);
+    //   displayIndex (indexNum);
+    //   displayMediaModal ();
+    // });
 
   function selectleft () {
       if (indexNum === 0) {
@@ -251,5 +268,4 @@ async function init () {
     });
   });
 }
-init ();
 export {tableMedias};

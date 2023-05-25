@@ -57,7 +57,8 @@ function profilFactory(data) {
         var img = document.createElement("img");
         img.setAttribute("src", picture)
         img.classList.add("photographer__profil__profile__image__img");
-        img.setAttribute("alt", "image");
+        img.setAttribute("alt", portrait);
+        
         divImage.appendChild(img);
         return (div);
 

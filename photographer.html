@@ -6,45 +6,55 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <div class="photographer-top">
+        <a href="/index.html" title="recharger la page"  >
+          <img src="assets/images/logo.png" alt="logo" aria-labelledby="retour" class="photographerslogo"  />
+        </a> 
+      <div>   
     </header>
     <main id="main">
-      <div class="photographer__">
+      <div class="photographer">
         <div class="photographer__profil"> 
         </div>
         <div class="photographer__trier">
             <form action="#" name="formPhotographer" id = "idPhotographer">
-              <label>Trier par:</label>
-              <select class="photographer__trier__select" id="selectBox">
-                  <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
-                  <option class="photographer__trier__select__option" value="date">Date</option>
-                  <option class="photographer__trier__select__option" value="title">Titre</option>
-              </select>
+              <section>
+                <select label="Trier par:" class="photographer__trier__select" id="selectBox" options={options}>
+                    <option class="photographer__trier__select__option" value="likes" selected>Popularité</option>
+                    <option class="photographer__trier__select__option" value="date">Date</option>
+                    <option class="photographer__trier__select__option" value="title">Titre</option>
+                </select>
+              </section>
             </form>
         </div>
         <div class="photographer__media"> 
         </div>
-        <div class="photographer__likes">
-          <div class="photographer__content">
-            <div class="icone-heart">
-              <img src="assets/icons/vector.png"></img>
+        <div class="photographer__container">
+          <div class="photographer__likes">
+            <div class="photographer__content">
+              <div class="icone-heart">
+                <img src="assets/icons/vector.png"></img>
+              </div> 
+              <div class="total-likes"></div> 
+              <div class="photographer__name"></div> 
             </div> 
-            <div class="total-likes"></div> 
-            <div class="photographer__name"></div> 
-          </div> 
         </div>
+      </div>
       </div>
       <div id="contact__modal">
         <div class="modal">
           <header>
           <div class="contacticone"> 
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <button class="contactbouttonicone" onclick="closeModal()" >
+              <img src="assets/icons/close.svg"  alt="button-close" />
+            </button>
           </div> 
-         
             <h2>Contactez-moi</h2>
             <div class="contactName"></div>
           </header>
@@ -109,7 +119,9 @@
         <div class="modal">
           <header>
             <div class="contacticone"> 
-              <img src="assets/icons/close.svg" onclick="closeMerciModal()" />
+              <button class="contactbouttonicone" onclick="closeMerciModal()" >
+                <img src="assets/icons/close.svg"  alt="button-close" />
+              </button>            
             </div>
             <h3>Merci pour votre inscription</h3>
           </header>

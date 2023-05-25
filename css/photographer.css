@@ -7,7 +7,7 @@
     height: 100%;
     width: 100%;
     overflow: auto;
-    /* background-color: rgba(1, 2, 11, 0.4); */
+    background-color: rgba(1, 2, 11, 0.4);
 }
 .btn-merci {
     width: auto;
@@ -25,17 +25,25 @@
 }
 .contact_button {
     width: 200px;
-    height: 50px;
+    height: 67px;
     font-size: 22px;
     font-weight: bold;
     color: white;
     padding: 10px;
-    /* align-self: center;     */
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 50px;
 }
+.contactbouttonicone{
+    background-color: #DB8876;
+    border: none;
+}
+.contact_button:hover {
+    color: black;
+    background-color: #D3573C;
+  }
 #contact__modal {
     display: none;
     position: fixed;
@@ -45,7 +53,8 @@
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(26, 39, 156, 0.4);
+    background-color: rgba(1, 2, 11, 0.4);
+
 }
 .modal {
     width: 50%;
@@ -85,14 +94,17 @@
     margin: 50px 0px 90px 0px;
 }
 form {
-    display: flex;
     width: 100%;
+    height: auto;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 form label {
+    width: 13%;
+    height: auto;
+    display: flex;
     color: #312E2E;
-    font-size: 36px;
+    font-size: 20px;
 }
 form div {
     display: flex;
@@ -107,6 +119,26 @@ form input {
     border: none;
     border-radius: 5px;
 }
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* border: 3px solid #901C1C; */
+}
+.photographer-top {
+    width: auto;
+    height: auto;
+    display: flex;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.photographerslogo{
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    /* margin: 20px 0px 0px 50px; */
+}
 .photographer__modal {
     /* display: none; */
     width: 100%;
@@ -118,17 +150,21 @@ form input {
     overflow: auto;
 }
 .photographer__profil{
-    width: 95%;
+    width: 90%;
     display: flex;
     align-items: center;
     margin: auto;
+    /* border: 3px solid #901C1C; */
+
 } 
  .photographer__profil__profile{
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    background-color: #FAFAFA;} 
+    background-color: #FAFAFA;
+} 
  .photographer__profil__profile__presentation{
     width: 27%;
     height: auto;
@@ -139,13 +175,13 @@ form input {
     margin: auto;
 }
 .photographer__profil__profile__presentation__name{
-    width: 80%;
-    font-size: 3rem;
-    margin: 10px 0px;
+    width: 90%;
+    font-size: 40px;
+    margin: 20px 0px 0px 0px;
     color: red;
 }
 .photographer__profil__profile__presentation__other{
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
@@ -154,7 +190,6 @@ form input {
     width: 100%;
     font-size: 1.2rem;
     color: red;
-    margin: 10px 0px;
 }
 .photographer__profil__profile__presentation__other__text{
     width: 100%;
@@ -182,8 +217,8 @@ form input {
     margin: auto;
 }
 .photographer__profil__profile__image__img{
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
     align-items: center;
     object-fit: cover;
     font-size: large;
@@ -191,17 +226,24 @@ form input {
     border-radius: 30rem;
 }
 .photographer__trier{
-    width: 95%;
+    width: 90%;
     display: flex;
     align-items: center;
     margin: auto;
+    /* border: 3px solid #901C1C; */
+
 }
 .photographer__trier__select{
-    background-color: #901C1C !important;
-    height: 150px;
-    font-size: x-large;
-    color: #901C1C;
-    border: 5px ridge rgb(108, 75, 209); 
+    width: 140px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 4px;
+    height: 50px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
     z-index: 0;
 }
 .photographer__trier__select__option{
@@ -210,15 +252,7 @@ form input {
     font-size: x-large;
     color: #901C1C;
     border: 5px ridge rgb(108, 75, 209); 
-    /* z-index: 0; */
 }
-.box {
-  background-color: rgb(191, 207, 235);
-  height: 150px;
-  font-size: x-large;
-  color: rgb(2, 0, 0);
-  border: 5px ridge rgb(108, 75, 209);
-  }
   select {
     background: rgb(194, 222, 209);
     border: 3px solid rgb(84, 73, 116);
@@ -229,52 +263,40 @@ form input {
 .photographer__trier__title{
     margin: 10px 20px;
 }
-.photographer__trier__select{
-    /* font-size: 1.2rem; */
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 4px;
-    min-width: 130px;
-    height: 50px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .photographer__media{
-    width: 95%;
+    width: 90%;
     height: 95%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin: auto;
+    /* border: 3px solid #901C1C; */
+
 } 
 .photographer__media__card{
-    width:  70vh;
-    height: 50vh;
+    width:  55vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(222, 222, 217);
+    /* border: 3px solid rgb(222, 222, 217); */
     justify-content: center;
     margin: 10px auto;
     border-radius: 15px;
 }
 .photographer__media__card__img{
-    /* min-width: 280px; */
     width: 100%;
     height: 90%;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center; */
     object-fit: cover;
     background-size:cover;
     border-radius: 15px 15px 0px 0px;
     transition: all 1s ease;
     cursor: pointer;
     }
-.photographer__media__card:hover{
+.photographer__media__card__img:hover{
         transform:scale(1.06);
     }
 
@@ -290,12 +312,11 @@ form input {
     width: 80%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+    margin: 10px 5px;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 0px 0px 0px 15px;
+    color: #901C1C;
 }
 .photographer__media__card__title__icone{
     width: 20%;
@@ -303,7 +324,7 @@ form input {
     display: flex;
     align-items: center;
     justify-content: end;
-    margin: auto;
+    margin: 10px 5px;
     cursor : pointer;
     border-radius: 0px 0px 15px 0px;
 }
@@ -326,7 +347,7 @@ form input {
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.455);
+    background-color: rgba(1, 2, 11, 0.4);
 }
 .lightbox__content{
     width:  70%;
@@ -398,10 +419,12 @@ form input {
 }
 .lightbox__name{
     width: 100%;
-    height: 40px;
-    font-size: 20px;
-    display: flex; 
-    justify-content: center;
+    height: 100%;
+    display: flex;
+    font-weight: 100;
+    font-size: 16px;
+    margin: 5px 0px 0px 108px;
+    color: #901C1C;
 }
 .closeDiaspo{
     width: 4vh;
@@ -434,4 +457,75 @@ form input {
     height: auto;
     display: flex;
     justify-content: flex-end;
+}
+@media screen and (max-width: 600px){
+    .photographer__profil__profile{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #FAFAFA;
+        border: 10px solid  #DB8876;
+        border-radius: 20px;
+        margin-bottom: 40px;
+
+    }
+    .photographer__profil__profile__presentation {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+
+    }
+    .photographer__profil__profile__presentation__name {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 0px;
+      }
+      .photographer__profil__profile__presentation__other{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+    }
+    .photographer__profil__profile__presentation__other__town{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .photographer__profil__profile__presentation__other__text{
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 0px 20px 0px;
+
+    }
+    .photographer__profil__profile__modal {
+        width: 37%;
+
+    }
+    .contact_button {
+        margin-bottom: 30px;
+    }
+    .photographer__profil__profile__image__img {
+        width: 25vw;
+        height: 25vw;
+        margin-bottom: 30px;
+    }
+    .lightbox__name{
+        margin: 5px 0px 0px 35px;
+    }
+}
+@media screen and (max-width: 426px){
+    .lightbox__name{
+        margin: 5px 0px 0px 45px;
+    }
 }

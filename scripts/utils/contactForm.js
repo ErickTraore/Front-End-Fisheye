@@ -24,7 +24,6 @@ let eltMessage = document.getElementById('errorMessage');
 const modalForm = document.getElementById("myForm");
 
 modalForm.addEventListener('submit', addModal);
-// function validate() {
 
 function addModal(e) {    e.preventDefault();
     console.log('Test du formulaire.')
