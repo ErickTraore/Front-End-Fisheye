@@ -25,18 +25,22 @@ function mediaFactory (photographerName, data, id ) {
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
 
-    var divPresent = document.createElement ('article');
-    // divPresent.classList.add ('box');
+    var divPresent = document.createElement ('div');
+  
 
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
-
-    // divPresent.setAttribute ('role', "button");
+  
     // divPresent.setAttribute ('aria-pressed', "true"   );
     // divPresent.setAttribute ('aria-describedby', 'ouvrir le slider');
 
     photographersMedia.appendChild (divPresent);
+    var divAncre = document.createElement ('button');
+    divAncre.classList.add ('photographer__media__card__img__media');
+    divAncre.setAttribute ('href', '#');
+    divPresent.appendChild (divAncre);
+
 
     console.log (type);
     if (type === `.jpg`) {
@@ -45,7 +49,7 @@ function mediaFactory (photographerName, data, id ) {
       img.classList.add ('photographer__media__card__img');
       // img.setAttribute ('role', "button");
       img.setAttribute ('alt', image);
-      divPresent.appendChild (img);
+      divAncre.appendChild (img);
     } else {
       var video = document.createElement ('video');
       video.setAttribute ('src', picture_1);
@@ -53,13 +57,13 @@ function mediaFactory (photographerName, data, id ) {
       video.setAttribute ('alt', 'video');
       video.setAttribute ('autoplay', '');
       video.setAttribute ('loop', '');
-      divPresent.appendChild (video);
+      divAncre.appendChild (video);
     }
     var divTitle = document.createElement ('div');
     divTitle.classList.add ('photographer__media__card__title');
     divPresent.appendChild (divTitle);
 
-    var divTexte = document.createElement ('div');
+    var divTexte = document.createElement ('p');
     divTexte.classList.add ('photographer__media__card__title__texte');
     divTitle.appendChild (divTexte);
     divTexte.innerHTML = data.title;
@@ -68,16 +72,23 @@ function mediaFactory (photographerName, data, id ) {
     divOther.classList.add ('photographer__media__card__title__icone');
     divTitle.appendChild (divOther);
 
-    var divNumber = document.createElement ('div');
+    var divNumber = document.createElement ('p');
     divNumber.classList.add ('photographer__media__card__title__icone__number');
     divOther.appendChild (divNumber);
     divNumber.innerHTML = counter;
 
+    var divAncre = document.createElement ('button');
+    divAncre.classList.add ('photographer__media__card__title__icone__media');
+    divAncre.setAttribute ('aria-label', 'like-photo');
+    divAncre.setAttribute ('role', 'button');
+    divAncre.setAttribute ('tabindex', '0');
+    divOther.appendChild (divAncre );
+
     var divLike = document.createElement ('img');
-    divOther.appendChild (divLike);
     divLike.setAttribute ('src', picture_3);
-    divLike.classList.add ('photographer__media__card__title__icone__heart');
-    divLike.innerHTML = picture_2;
+    divLike.setAttribute ('alt', 'icone-heart');
+    divAncre .appendChild (divLike);
+
   }
   return {
     picture_1,

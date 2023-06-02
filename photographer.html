@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographerlikes.css" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
           <div class="photographer__likes">
             <div class="photographer__content">
               <div class="icone-heart">
-                <img src="assets/icons/vector.png"></img>
+                <img src="assets/icons/vector.png" alt="coeur"></img>
               </div> 
               <div class="total-likes"></div> 
               <div class="photographer__name"></div> 
@@ -51,7 +51,7 @@
         <div class="modal">
           <header>
           <div class="contacticone"> 
-            <button class="contactbouttonicone" onclick="closeModal()" >
+            <button class="contactbouttonicone" type="button" onclick="closeModal()" >
               <img src="assets/icons/close.svg"  alt="button-close" />
             </button>
           </div> 
@@ -119,7 +119,7 @@
         <div class="modal">
           <header>
             <div class="contacticone"> 
-              <button class="contactbouttonicone" onclick="closeMerciModal()" >
+              <button class="contactbouttonicone" type="button" onclick="closeMerciModal()" >
                 <img src="assets/icons/close.svg"  alt="button-close" />
               </button>            
             </div>
@@ -129,11 +129,13 @@
           </input>
         </div>
       </div>
-      <div class="lightbox__modal">
+      <div class="lightbox__modal ">
       </div>
+     
+
     </main>
     <script src="scripts/pages/photographer.js" type="module"></script>
-    <script src="scripts/factories/photographer.js"></script>
+    <script type="text/javascript" src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/profil.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/utils/contactForm.js"></script>

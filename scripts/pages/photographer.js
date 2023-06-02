@@ -1,4 +1,6 @@
 import Api from '../api/Api.js';
+
+
 const tableMedias = [];
 // const lightboxcontent = document.querySelector ('#lightbox__content');
 let lightboxmodal = document.querySelector ('.lightbox__modal');
@@ -8,8 +10,53 @@ let numIndex = 0;
 let testPicture = '';
 let photographerName = '';
 const totalHtml = document.querySelector ('.total-likes');
+let numberKey = 0 ;
+const focusableSelector = 'button, a'
+const focusables = [];
 
-// Récupération dynamique de l'id de la page
+
+
+// function getKeyOfLightbox(){
+//   console.log("vérification dela clef");
+//   // const inputKey = document.querySelector("input");
+//   const inputKey = document.querySelector(".lightbox__nav");
+//   // const log = document.getElementById("log");
+//   inputKey.addEventListener("keydown", logKey);
+//   function logKey(e) {
+//     // console.log(`${e.code}`);
+//     numberKey = numberKey  + 1 ;
+//     console.log(e.keyCode);
+//     console.log(numberKey);
+
+//     if(numberKey == 3){
+//       numberKey = 0 
+//       inputKey.focus();
+//     }
+
+//     // log.textContent += ` ${e.code}`;
+//   }
+//  }
+
+const focusInModal = function(e) {
+  e.preventDefault()
+  const divlightbox = document.querySelector(".lightbox__modal");
+  focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
+
+console.log(focusables)
+}
+// programmation de la touche echap pour fermer la lightbox
+window.addEventListener('keydown', function(e){
+  if(e.key === "Escape" || e.key === "Esc"){
+    closeMediaModal() 
+  }
+  if(e.key === "Tab" &&  lightboxmodal !== null){
+    focusInModal(e)
+  }
+});
+
+
+
+
 const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
 
 // création des données relative aux médias du photographe
@@ -94,7 +141,8 @@ async function init () {
   // Pour chaque media(carte), identifions le coeur(heart) et son nombre de like(like-number).
   const medias = document.querySelectorAll ('.photographer__media__card');
   medias.forEach (media => {
-  const heart = media.querySelector ('.photographer__media__card__title__icone__heart');
+  // const heart = media.querySelector ('.photographer__media__card__title__icone__heart');
+  const hearted = media.querySelector ('.photographer__media__card__title__icone__media');
   const like = media.querySelector ('.photographer__media__card__title__icone__number');
   
   const mediaName = photographerName.replaceAll (' ', '-');
@@ -136,28 +184,38 @@ async function init () {
 
       let divNav = document.createElement ('div');
       divNav.classList.add ('lightbox__nav');
+      divNav.setAttribute ('data-target', ".lightbox__nav");
       divIm.appendChild (divNav);
       
-      let divx = document.createElement ('div');
+      let divx = document.createElement ('button');
       divx.classList.add ('lightbox__close');
+      divx.setAttribute ('id', 'lightbox__close');
+      divx.setAttribute ('onclick', 'closeMediaModal()');
+      divx.setAttribute ('title', 'Fermez la modale');
+      divx.setAttribute ('data-target', ".lightbox__close");
+      divx.setAttribute ('tabindex', '0');
+      divx.setAttribute ('href', '#');
       divNav.appendChild (divx);
       let divNavigate = document.createElement ('div');
       divNavigate.classList.add ('lightbox__navigate');
       divNav.appendChild (divNavigate);
       let divname = document.createElement ('div');
       divname.classList.add ('lightbox__name');
+      divx.setAttribute ('href', '#');
       divNav.appendChild (divname);
       divname.innerHTML = titre;
 
-
       let divClose = document.createElement ('img');
+      numberKey = 0 ;
       divClose.setAttribute ('src', 'assets/icons/close.svg');
-      divClose.setAttribute ('onclick', 'closeMediaModal()');
       divClose.setAttribute ('class', 'closeDiaspo');
+      divClose.setAttribute ('alt', 'image-close');
       divx.appendChild (divClose);
       
-      let divLeft = document.createElement ('div');
+      let divLeft = document.createElement ('a');
       divLeft.classList.add ('lightbox__nav__fleche-gauche');
+      divLeft.setAttribute ('href', '#');
+      divLeft.setAttribute ('tabindex', '0');
       divNavigate.appendChild (divLeft);
       divLeft.innerHTML = '\u3008 ';
 
@@ -178,8 +236,10 @@ async function init () {
         divNavigate.appendChild (divImg);
       }
 
-      let divRigth = document.createElement ('div');
+      let divRigth = document.createElement ('a');
       divRigth.classList.add ('lightbox__nav__fleche-droite');
+      divRigth.setAttribute ('href', '#');
+      divRigth.setAttribute ('tabindex', '0');
       divNavigate.appendChild (divRigth);
       divRigth.innerHTML = '\u3009';
 
@@ -196,38 +256,50 @@ async function init () {
         selectright ();
       });
     }
-
+   
+     
+    // const mediaCard = media.querySelector ('.photographer__media__card');  
     const img = media.querySelector ('.photographer__media__card__img');
     const video = media.querySelector ('.photographer__media__card__img');
+    const clickMedia = media.querySelector ('.photographer__media__card__img__media');
     
+    clickMedia.addEventListener('click',function() { 
+        document.querySelector ('.lightbox__modal').innerHTML = '';
+        indexNum = getIndex (0);
+        displayIndex (indexNum);
+        displayMediaModal ();
+        // getKeyOfLightbox();
+      });
+
+    img.addEventListener ('click', function(setImg) {
+      document.querySelector ('.lightbox__modal').innerHTML = '';
+      indexNum = getIndex (0);
+      displayIndex (indexNum);
+      displayMediaModal ();
+      // getKeyOfLightbox();
+    });
+    video.addEventListener ('click', function(setVideo) {
+      document.querySelector ('.lightbox__modal').innerHTML = '';
+      indexNum = getIndex (0);
+      displayIndex (indexNum);
+      displayMediaModal ();
+      // getKeyOfLightbox();
+    });
+
     img.addEventListener ('click', () => {
       document.querySelector ('.lightbox__modal').innerHTML = '';
       indexNum = getIndex (0);
       displayIndex (indexNum);
       displayMediaModal ();
+      // getKeyOfLightbox()
     });
     video.addEventListener ('click', () => {
       document.querySelector ('.lightbox__modal').innerHTML = '';
       indexNum = getIndex (0);
       displayIndex (indexNum);
       displayMediaModal ();
+      // getKeyOfLightbox()
     });
-
-    // const img = media.querySelector ('.photographer__media__card__img');
-    // const video = media.querySelector ('.photographer__media__card__img');
-    
-    // img.addEventListener ('click', () => {
-    //   document.querySelector ('.lightbox__modal').innerHTML = '';
-    //   indexNum = getIndex (0);
-    //   displayIndex (indexNum);
-    //   displayMediaModal ();
-    // });
-    // video.addEventListener ('click', () => {
-    //   document.querySelector ('.lightbox__modal').innerHTML = '';
-    //   indexNum = getIndex (0);
-    //   displayIndex (indexNum);
-    //   displayMediaModal ();
-    // });
 
   function selectleft () {
       if (indexNum === 0) {
@@ -238,6 +310,7 @@ async function init () {
       console.log (indexNum);
       document.querySelector ('.lightbox__modal').innerHTML = '';
       displayIndex (indexNum);
+      // getKeyOfLightbox()
     }
   function selectright () {
       if (indexNum === tableMedias.length - 1) {
@@ -248,10 +321,11 @@ async function init () {
       console.log (indexNum);
       document.querySelector ('.lightbox__modal').innerHTML = '';
       displayIndex (indexNum);
+      // getKeyOfLightbox()
     }
     let isLiked = false;
 
-    heart.addEventListener ('click', () => {
+    hearted.addEventListener ('click', () => {
       let numLike = parseInt (like.textContent);
       if (!isLiked) {
         numLike++;
@@ -266,6 +340,17 @@ async function init () {
       totalHtml.innerHTML = totalLikes;
       console.log (numLike);
     });
-  });
+  
+  const focusInModal = function(e) {
+    e.preventDefault()
+    const divlightbox = document.querySelector(".lightbox__modal");
+    focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
+  
+  console.log(focusables)
+  }
+});
+
+
 }
+
 export {tableMedias};
