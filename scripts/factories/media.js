@@ -36,9 +36,11 @@ function mediaFactory (photographerName, data, id ) {
     // divPresent.setAttribute ('aria-describedby', 'ouvrir le slider');
 
     photographersMedia.appendChild (divPresent);
-    var divAncre = document.createElement ('button');
+    var divAncre = document.createElement ('a');
     divAncre.classList.add ('photographer__media__card__img__media');
-    divAncre.setAttribute ('href', '#');
+    divAncre.setAttribute ('id', '#photographer__media__card__img');
+    divAncre.setAttribute ('href', '#photographer__media__card__img');
+    divAncre.classList.add ('js-modal');
     divPresent.appendChild (divAncre);
 
 
@@ -88,6 +90,8 @@ function mediaFactory (photographerName, data, id ) {
     divLike.setAttribute ('src', picture_3);
     divLike.setAttribute ('alt', 'icone-heart');
     divAncre .appendChild (divLike);
+
+
 
   }
   return {

@@ -1,3 +1,12 @@
+body, html {
+margin: 0;
+padding: 0;
+}
+
+* {box-sizing: border-box;}
+*:focus {
+    box-shadow: 0 0 10px blue;
+}
 .merci__modal {
     display: none;
     position: fixed;
@@ -350,7 +359,53 @@ main {
     height: auto;
     margin: 10px;
 }
-.lightbox__modal{
+
+.modal-light{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+.modal-wrapper{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #FFF;
+}
+.lightbox__content{
+    width: auto;
+    height: auto;
+    
+}
+.lightbox__navigate {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox__content__image{
+    width:  50vw;
+    height: 50vw;
+    position: relative;
+    display: flex;
+    object-fit: cover;
+    border-radius: 15px 15px;
+    transition: all 1s ease;
+    z-index: 0;
+    cursor: pointer;  
+}
+.lightbox__close{
+    width: 100%;
+    height: 40px;
+    display: flex; 
+    flex-direction: row-reverse;
+ }
+ .lightbox__modal{
     display: none;
     position: fixed;
     z-index: 110;
@@ -364,12 +419,13 @@ main {
 }
 .lightbox__modal.active{
     display: flex;
+    border: solid 3px red;
 }
-.lightbox__content{
+/*.lightbox__content{
     width:  70%;
     height: auto;
     /* border: solid 6px blue; */
-    display: flex;
+   /*   display: flex;
     justify-content: center;
     margin: auto auto;
 
@@ -381,7 +437,7 @@ main {
     display: flex;
     flex-direction: column;
     /* border: solid 6px blue; */
-    background-color: white;
+ /*     background-color: white;
 }
 .lightbox__navigate{
     
@@ -391,7 +447,7 @@ main {
     flex-direction: row;
     /* border: solid 7px yellowgreen; */
     /* overflow: hidden; */
-    align-items: center;
+  /*    align-items: center;
     margin: auto auto;
 }
 .lightbox__nav__fleche-gauche{
@@ -402,7 +458,7 @@ main {
     justify-content: center;
     margin: auto auto;
     /* border: solid 3px red; */
-    font-size: 40px;
+  /*    font-size: 40px;
     font-weight: 00;
 }
 .lightbox__content__image{
@@ -426,14 +482,13 @@ main {
     justify-content: center;
     margin: auto auto;
     /* border: solid 3px red; */
-}
+ /* }
 .lightbox__close{
     width: 100%;
     height: 40px;
     display: flex; 
     flex-direction: row-reverse;
-    /* border: solid 7px red; */
-}
+ /* }
 .lightbox__name{
     width: 100%;
     height: 100%;
@@ -443,8 +498,8 @@ main {
     margin: 5px 0px 0px 108px;
     color: #901C1C;
     
-}
-.closeDiaspo{
+} */
+.closeDiapo{
     width: 4vh;
     position: relative;
     height: auto;

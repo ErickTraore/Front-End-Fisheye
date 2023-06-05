@@ -15,7 +15,6 @@ function closeModal() {
 function closeMerciModal() {
     const divmerciModal = document.querySelector(".merci__modal");
     divmerciModal.style.display = "none";
-    
 }
 let eltEmail = document.getElementById('errorEmail');
 let eltLast = document.getElementById('errorLast');
@@ -23,9 +22,40 @@ let eltFirst = document.getElementById('errorFirst');
 let eltMessage = document.getElementById('errorMessage');
 const modalForm = document.getElementById("myForm");
 
+const focusableSelector = 'input, button, a'
+const modal = document.getElementById("contact__modal");
+console.log(modal);
+
+function focusInModalContact(e) {
+  e.preventDefault();
+  console.log("1-test de 'focusInModalContact' ");
+  const focusablesContact = Array.from(modal.querySelectorAll(focusableSelector));
+  console.log(focusablesContact);
+  let index = focusablesContact.findIndex(f => f === modal.querySelector(':focus'));
+  console.log('1-index', index)
+  console.log('2-index', index)
+  console.log('focusables.length', focusablesContact.length)
+  console.log('focusables[index]', focusablesContact[index])
+  let focusLength  = focusablesContact.length;
+
+  focusFactory (index, e, focusablesContact, focusLength)
+
+}
+
+window.addEventListener('keydown', function(e){
+  if(e.key === "Escape" || e.key === "Esc") {
+    closeModal(e) 
+  }
+  if(e.key === "Tab" && modal.style.display === "flex" ){
+    focusInModalContact(e)
+  }
+});
+
 modalForm.addEventListener('submit', addModal);
 
-function addModal(e) {    e.preventDefault();
+function addModal(e) {   
+   
+    e.preventDefault();
     console.log('Test du formulaire.')
     const formData = new FormData(myForm);
     const first = formData.get('first');
@@ -97,4 +127,28 @@ function addModal(e) {    e.preventDefault();
     console.log('result is false.');
     }
 
+    const focusableSelector = 'input, button'
+    const modal = document.querySelector(".merci__modal");
+    
+    function focusInModalMerci(e) {
+      e.preventDefault();
+      const focusablesMerci = Array.from(modal.querySelectorAll(focusableSelector));
+      let index = focusablesMerci.findIndex(f => f === modal.querySelector(':focus'));
+      console.log('1-index', index)
+      console.log('focusables.length', focusablesMerci.length)
+      console.log('focusables[index]', focusablesMerci[index])
+      let focusLength  = focusablesMerci.length;
+
+      focusFactory (index, e, focusablesMerci, focusLength)
     }
+
+    window.addEventListener('keydown', function(e){
+      if(e.key === "Escape" || e.key === "Esc") {
+        closeMerciModal(e) 
+      }
+      if(e.key === "Tab" && modal.style.display === "flex" ){
+        focusInModalMerci(e)
+      }
+    })
+
+  }

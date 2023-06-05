@@ -1,6 +1,5 @@
 import Api from '../api/Api.js';
 
-
 const tableMedias = [];
 // const lightboxcontent = document.querySelector ('#lightbox__content');
 let lightboxmodal = document.querySelector ('.lightbox__modal');
@@ -10,52 +9,38 @@ let numIndex = 0;
 let testPicture = '';
 let photographerName = '';
 const totalHtml = document.querySelector ('.total-likes');
-let numberKey = 0 ;
+
+// Gestion du focus
 const focusableSelector = 'button, a'
-const focusables = [];
+const divlightbox = document.querySelector(".lightbox__modal");
 
-
-
-// function getKeyOfLightbox(){
-//   console.log("vérification dela clef");
-//   // const inputKey = document.querySelector("input");
-//   const inputKey = document.querySelector(".lightbox__nav");
-//   // const log = document.getElementById("log");
-//   inputKey.addEventListener("keydown", logKey);
-//   function logKey(e) {
-//     // console.log(`${e.code}`);
-//     numberKey = numberKey  + 1 ;
-//     console.log(e.keyCode);
-//     console.log(numberKey);
-
-//     if(numberKey == 3){
-//       numberKey = 0 
-//       inputKey.focus();
-//     }
-
-//     // log.textContent += ` ${e.code}`;
-//   }
-//  }
-
-const focusInModal = function(e) {
-  e.preventDefault()
-  const divlightbox = document.querySelector(".lightbox__modal");
-  focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
-
-console.log(focusables)
+function focusInModal(e) {
+  e.preventDefault();
+  console.log(divlightbox);
+  console.log("1-test de modalLightbox");
+  const focusablesLightbox = Array.from(divlightbox.querySelectorAll(focusableSelector));
+  console.log(focusablesLightbox);
+  let index = focusablesLightbox.findIndex(f => f === divlightbox.querySelector(':focus'));
+  console.log('1-index', index)
+  console.log('2-index', index)
+  console.log('focusables.length', focusablesLightbox.length)
+  console.log('focusables[index]', focusablesLightbox[index])
+  let focusLength  = focusablesLightbox.length;
+  
+  focusFactory (index, e, focusablesLightbox, focusLength)
 }
 // programmation de la touche echap pour fermer la lightbox
-window.addEventListener('keydown', function(e){
-  if(e.key === "Escape" || e.key === "Esc"){
-    closeMediaModal() 
-  }
-  if(e.key === "Tab" &&  lightboxmodal !== null){
-    focusInModal(e)
-  }
-});
-
-
-
+function contactListener(data) {
+  window.addEventListener('keydown', function(e){
+    if(e.key === "Escape" || e.key === "Esc") {
+      closeMediaModal(e) 
+    }
+    if(e.key === "Tab" && lightboxmodal.style.display === "flex" ){
+      focusInModal(e)
+    }
+  });
+}
+contactListener(lightboxmodal);
 
 const id = parseInt (new URLSearchParams (window.location.search).get ('id'));
 
@@ -178,39 +163,58 @@ async function init () {
       const getFileExtension = url =>
         `.${url.split ('?')[0].split ('.').pop ()}`;
       const type = getFileExtension (url[0]);
+
       let divIm = document.createElement ('div');
+      // divIm.setAttribute ('href', '#lightbox__nav');
       divIm.classList.add ('lightbox__content');
+      divIm.classList.add ('js-modal');
       lightboxmodal.appendChild (divIm);
 
-      let divNav = document.createElement ('div');
-      divNav.classList.add ('lightbox__nav');
-      divNav.setAttribute ('data-target', ".lightbox__nav");
-      divIm.appendChild (divNav);
+      let divNav = document.createElement ('aside');
+      // divNav.classList.add ('lightbox__nav');
+      divNav.classList.add ('modal-light');
+      divNav.setAttribute ('id', 'lightbox__nav');
+      divNav.setAttribute ('aria-hidden', 'true');
+      divNav.setAttribute ('aria-labelledBy', 'texteh3');
+      divNav.setAttribute ('role', 'dialog');
+      lightboxmodal.appendChild (divNav);
+
+      let divWrapper = document.createElement ('div');
+      divWrapper.classList.add ('modal-wrapper');
+      divNav.appendChild (divWrapper);
       
-      let divx = document.createElement ('button');
+      let divH3 = document.createElement ('h3');
+      divH3.setAttribute ('id', 'texteh3');
+      divWrapper.appendChild (divH3);
+      divH3.innerHTML = "";
+
+      
+      let divx = document.createElement ('div');
       divx.classList.add ('lightbox__close');
-      divx.setAttribute ('id', 'lightbox__close');
-      divx.setAttribute ('onclick', 'closeMediaModal()');
-      divx.setAttribute ('title', 'Fermez la modale');
-      divx.setAttribute ('data-target', ".lightbox__close");
-      divx.setAttribute ('tabindex', '0');
-      divx.setAttribute ('href', '#');
-      divNav.appendChild (divx);
+      // divx.setAttribute ('tabindex', '0');
+      // divx.setAttribute ('href', '#');
+      // // divx.setAttribute ('id', 'lightbox__close');
+      // divx.setAttribute ('onclick', 'closeMediaModal()');
+      divWrapper.appendChild (divx);
+      
       let divNavigate = document.createElement ('div');
       divNavigate.classList.add ('lightbox__navigate');
-      divNav.appendChild (divNavigate);
+      divWrapper.appendChild (divNavigate);
+      
       let divname = document.createElement ('div');
       divname.classList.add ('lightbox__name');
-      divx.setAttribute ('href', '#');
-      divNav.appendChild (divname);
+      divWrapper.appendChild (divname);
       divname.innerHTML = titre;
 
-      let divClose = document.createElement ('img');
-      numberKey = 0 ;
-      divClose.setAttribute ('src', 'assets/icons/close.svg');
+      let divClose = document.createElement ('button');
+      // numberKey = 0 ;
       divClose.setAttribute ('class', 'closeDiaspo');
       divClose.setAttribute ('alt', 'image-close');
+      divClose.setAttribute ('role', 'button');
+      divClose.setAttribute ('role', 'button');
+      divClose.setAttribute ('onclick', 'closeMediaModal()');
       divx.appendChild (divClose);
+      divClose.innerHTML = 'X'
       
       let divLeft = document.createElement ('a');
       divLeft.classList.add ('lightbox__nav__fleche-gauche');
@@ -261,9 +265,9 @@ async function init () {
     // const mediaCard = media.querySelector ('.photographer__media__card');  
     const img = media.querySelector ('.photographer__media__card__img');
     const video = media.querySelector ('.photographer__media__card__img');
-    const clickMedia = media.querySelector ('.photographer__media__card__img__media');
+    const openModal = media.querySelector ('.js-modal');
     
-    clickMedia.addEventListener('click',function() { 
+    openModal.addEventListener('click',function() { 
         document.querySelector ('.lightbox__modal').innerHTML = '';
         indexNum = getIndex (0);
         displayIndex (indexNum);
@@ -300,7 +304,9 @@ async function init () {
       displayMediaModal ();
       // getKeyOfLightbox()
     });
-
+    window.addEventListener('keydom', function(e){
+      console.log(e.key);
+    })
   function selectleft () {
       if (indexNum === 0) {
         indexNum = tableMedias.length - 1;
