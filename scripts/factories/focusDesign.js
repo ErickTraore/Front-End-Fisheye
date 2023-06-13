@@ -1,8 +1,6 @@
 function   focusFactory (data, e, focusablesLightbox, focusLength) {
-    if(data >= 3) {
-        console.log(data);
-        }
-    if(e.shiftkey === true) {
+  
+    if(e.shiftKey === true) {
           data-- ;
         } else {
           data++ ;

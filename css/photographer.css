@@ -3,9 +3,11 @@ margin: 0;
 padding: 0;
 }
 
-* {box-sizing: border-box;}
+* { 
+    box-sizing: border-box;
+}
 *:focus {
-    box-shadow: 0 0 10px blue;
+    box-shadow: 0 0 10px #D3573C;
 }
 .merci__modal {
     display: none;
@@ -22,6 +24,11 @@ padding: 0;
 .icone-heart{
     width: auto;
     height: auto;
+    border: none;
+    background-color: transparent;
+    :hover {
+        transform:scale(1.30);
+    }
 }
 .btn-merci {
     width: auto;
@@ -302,9 +309,9 @@ main {
     height: 40vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 2px auto;
-    border-radius: 15px;
+    justify-content: flex-end;
+    margin: 0px auto;
+    /* border-radius: 15px; */
 }
 .photographer__media__card__img{
     width: 100%;
@@ -358,23 +365,41 @@ main {
     width: 50%;
     height: auto;
     margin: 10px;
+    display: flex;
 }
 
-.modal-light{
-    position: fixed;
-    top: 0;
-    left: 0;
+.modal-light {
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .modal-wrapper{
-    width: auto;
+    width: 80%;
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 20px;
     background-color: #FFF;
+    margin: 100px auto;
+
+
+}
+.lightbox__div-gauche{
+    width: 5vw;
+    height: 50vw;
+    font-weight: 600; 
+    font-size: 40px;
+    border: solid 3px rgb(60, 255, 0);
+
+}
+.lightbox__div-droite{
+    width: auto;
+    height: 50vw;
+    font-weight: 600; 
+    font-size: 40px;
+
 }
 .lightbox__content{
     width: auto;
@@ -387,6 +412,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .lightbox__content__image{
     width:  50vw;
@@ -398,115 +424,56 @@ main {
     transition: all 1s ease;
     z-index: 0;
     cursor: pointer;  
+    background-color: rgb(123, 125, 119);
+
 }
-.lightbox__close{
-    width: 100%;
-    height: 40px;
-    display: flex; 
-    flex-direction: row-reverse;
- }
  .lightbox__modal{
+    height: 100%;
+    width: 100%;
     display: none;
     position: fixed;
     z-index: 110;
     left: 0;
     top: 0;
-    height: 100%;
-    width: 100%;
     min-width: 300px;
     overflow: auto;
     background-color: rgba(1, 2, 11, 0.4);
 }
 .lightbox__modal.active{
     display: flex;
-    border: solid 3px red;
 }
-/*.lightbox__content{
-    width:  70%;
-    height: auto;
-    /* border: solid 6px blue; */
-   /*   display: flex;
-    justify-content: center;
-    margin: auto auto;
+.testeh3 {
+    position: absolute;
+    background-color: transparent;
+
+
 
 }
-
-.lightbox__nav{
-    width:  100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    /* border: solid 6px blue; */
- /*     background-color: white;
-}
-.lightbox__navigate{
-    
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    /* border: solid 7px yellowgreen; */
-    /* overflow: hidden; */
-  /*    align-items: center;
-    margin: auto auto;
-}
-.lightbox__nav__fleche-gauche{
-    width: 7vh;
-    height: auto;
-    color: #901c1c;
-    display: flex;
-    justify-content: center;
-    margin: auto auto;
-    /* border: solid 3px red; */
-  /*    font-size: 40px;
-    font-weight: 00;
-}
-.lightbox__content__image{
-    width:  50vw;
-    height: 50vw;
+/* .closeDiapo {
     position: relative;
-    display: flex;
-    object-fit: cover;
-    border-radius: 15px 15px;
-    transition: all 1s ease;
-    z-index: 0;
+    font-weight: 900;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    top: 0vw;
+    right: 16vw;
     cursor: pointer;
-}
-.lightbox__nav__fleche-droite{
-    width: 7vh;
-    position: relative;
     color: #901c1c;
-    height: auto;
-    display: flex;
-    font-size: 40px;
-    justify-content: center;
-    margin: auto auto;
-    /* border: solid 3px red; */
- /* }
-.lightbox__close{
-    width: 100%;
-    height: 40px;
-    display: flex; 
-    flex-direction: row-reverse;
- /* }
-.lightbox__name{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    font-weight: 100;
-    font-size: 16px;
-    margin: 5px 0px 0px 108px;
-    color: #901C1C;
-    
 } */
 .closeDiapo{
-    width: 4vh;
-    position: relative;
+    width: auto;
     height: auto;
+    position: fixed;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
     display: flex;
-    align-items: flex-end;
-    margin: 10px 20px;
-    /* tabindex */
+    top: 23%;
+    right: 20%;
+    font-size: x-large;
+    cursor: pointer;
+    color: #901c1c;
+
 }
 .title{
     width: 100%;
@@ -532,15 +499,61 @@ main {
     display: flex;
     justify-content: flex-end;
 }
-@media screen and (max-width: 600px){
+/* a.lightbox__nav__fleche-gauche */
+a {
+    width: auto; 
+    height: auto;
+    display: flex; 
+    text-decoration: none;
+    flex-direction: column;
+    color: #901c1c;
+    font-weight: 600; 
+    font-size: 40px;
+    margin: 20px 20px;
+
+  }
+  .lightbox__div-image {
+    width: auto; 
+    height: auto;
+}
+    .lightbox__name {
+    width: auto; 
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #FFF;
+    color: #901c1c;
+    font-size: 18px;
+    padding: 6px;
+
+}
+/* @media screen and (max-width: 321px){
+    .closeDiapo {
+        top: 42vw;
+        right: 20vw;
+    }
+}
+@media screen and (max-width: 425px){
+    .closeDiapo {
+        top: 40vw;
+        right: 20vw;
+    }
+} */
+@media screen and (max-width: 374px) and (min-width: 300px)  {
+    .closeDiapo {
+        top: 45vw;
+        right: 40vw;
+    }
+}
+@media screen and (max-width: 600px) and (min-width: 375px)  {
+
+/* @media screen and (max-width: 600px){ */
     .photographer__profil__profile{
         width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* background-color: #FAFAFA; */
-        /* border: 10px solid  #DB8876; */
         border-radius: 20px;
         margin-bottom: 40px;
 
@@ -562,8 +575,8 @@ main {
         align-items: center;
         justify-content: center;
         margin: 0px 0px;
-      }
-      .photographer__profil__profile__presentation__other{
+    }
+    .photographer__profil__profile__presentation__other{
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -584,7 +597,6 @@ main {
     }
     .photographer__profil__profile__modal {
         width: 37%;
-
     }
     .contact_button {
         margin-bottom: 30px;
@@ -594,12 +606,32 @@ main {
         height: 25vw;
         margin-bottom: 30px;
     }
-    .lightbox__name{
-        margin: 5px 0px 0px 35px;
+    .lightbox__div-gauche {
+        width: 9vw;
+        height: 50vw;
+        border: solid 3px red;
+    }
+    .lightbox__content__image{
+        width:  50vw;
+        height: 50vw;
+    }
+    .closeDiapo {
+        top: 33vw;
+        right: 16vw;
     }
 }
-@media screen and (max-width: 426px){
-    .lightbox__name{
-        margin: 5px 0px 0px 45px;
+
+@media screen and (min-width: 1440px){
+    .lightbox__content__image {
+        width: 40vw;
+        height: 40vw;
     }
+    .closeDiapo {
+        top: 14%;
+        right: 27%;
+    }
+    .modal-wrapper{
+            margin: 15px auto;
+    } 
+
 }

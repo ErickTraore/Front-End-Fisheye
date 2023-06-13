@@ -1,4 +1,4 @@
-function mediaFactory (photographerName, data, id ) {
+function mediaFactory (photographerName, data, id) {
   const image = data.image;
   const title = data.title;
   console.log (data);
@@ -20,18 +20,17 @@ function mediaFactory (photographerName, data, id ) {
   console.log (photographerName);
   console.log (mediaName);
   console.log (image);
- 
+
   function getUserMediaDOM () {
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
 
     var divPresent = document.createElement ('div');
-  
 
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
-  
+
     // divPresent.setAttribute ('aria-pressed', "true"   );
     // divPresent.setAttribute ('aria-describedby', 'ouvrir le slider');
 
@@ -43,17 +42,18 @@ function mediaFactory (photographerName, data, id ) {
     divAncre.classList.add ('js-modal');
     divPresent.appendChild (divAncre);
 
-
     console.log (type);
     if (type === `.jpg`) {
       var img = document.createElement ('img');
       img.setAttribute ('src', picture_1);
       img.classList.add ('photographer__media__card__img');
+      img.dataset.id = data.id;
       // img.setAttribute ('role', "button");
       img.setAttribute ('alt', image);
       divAncre.appendChild (img);
     } else {
       var video = document.createElement ('video');
+      video.dataset.id = data.id;
       video.setAttribute ('src', picture_1);
       video.classList.add ('photographer__media__card__img');
       video.setAttribute ('alt', 'video');
@@ -84,15 +84,12 @@ function mediaFactory (photographerName, data, id ) {
     divAncre.setAttribute ('aria-label', 'like-photo');
     divAncre.setAttribute ('role', 'button');
     divAncre.setAttribute ('tabindex', '0');
-    divOther.appendChild (divAncre );
+    divOther.appendChild (divAncre);
 
     var divLike = document.createElement ('img');
     divLike.setAttribute ('src', picture_3);
     divLike.setAttribute ('alt', 'icone-heart');
-    divAncre .appendChild (divLike);
-
-
-
+    divAncre.appendChild (divLike);
   }
   return {
     picture_1,
@@ -103,6 +100,3 @@ function mediaFactory (photographerName, data, id ) {
     getUserMediaDOM,
   };
 }
-
-
-

@@ -34,15 +34,7 @@ h1 {
     width: auto;
     height: 50px; 
 }
-a{
-  width: auto; 
-   height: auto;
-   display: flex; 
-   text-decoration: none;
-   flex-direction: column;
-   color: inherit;
-   font-weight: 600; 
-}
+
 
 .photographer_section {
     width: 100%; 
