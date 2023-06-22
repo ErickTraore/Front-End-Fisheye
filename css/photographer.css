@@ -75,7 +75,6 @@ padding: 0;
     width: 100%;
     overflow: auto;
     background-color: rgba(1, 2, 11, 0.4);
-
 }
 .modal {
     width: 50%;
@@ -92,9 +91,7 @@ padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: row-reverse;
-
 }
-
 .modal header img {
     width: 4vh;
     /* position: relative; */
@@ -238,8 +235,8 @@ main {
     margin: auto;
 }
 .photographer__profil__profile__image__img{
-    width: 13rem;
-    height: 13rem;
+    width: 15vw;
+    height: 15vw;
     align-items: center;
     object-fit: cover;
     font-size: large;
@@ -251,8 +248,18 @@ main {
     display: flex;
     align-items: center;
     margin: auto;
-    /* border: 3px solid #901C1C; */
+}
+section{
+    width: auto;
+    height: auto;
+    display: flex;
 
+}
+section h3{
+    width: auto;
+    height: auto;
+    display: flex;
+    margin: 10px 10px;
 }
 .photographer__trier__select{
     width: 140px;
@@ -360,6 +367,7 @@ main {
     width: 40%;
     font-size: 20px;
     height: auto;
+    color: #901C1C;
 }
 .photographer__media__card__title__icone__heart{
     width: 50%;
@@ -442,22 +450,7 @@ main {
 .testeh3 {
     position: absolute;
     background-color: transparent;
-
-
-
 }
-/* .closeDiapo {
-    position: relative;
-    font-weight: 900;
-    border: none;
-    background-color: transparent;
-    font-size: 2rem;
-    top: 0vw;
-    right: 16vw;
-    cursor: pointer;
-    color: #901c1c;
-} */
-
 .title{
     width: 100%;
     height: auto;
@@ -496,7 +489,6 @@ main {
     display: flex;  
     justify-content: center;
     /* border: solid 3px rgb(255, 221, 0); */
-
 }
 .lightbox__nav__fleche-gauche {
     width: auto; 
@@ -510,7 +502,6 @@ main {
     font-size: 40px;
     margin: 0px 5px;
     /* border: solid 3px rgb(0, 255, 47); */
-
 }
 .lightbox__div-droite{
     position: relative;
@@ -524,7 +515,6 @@ main {
     /* border: solid 3px red; */
     align-items: center;
     background-color: transparent;
-
 }
 .lightbox__nav__fleche-droite {
     width: auto; 
@@ -539,7 +529,6 @@ main {
     position: relative;
     margin: 0px 5px;
     /* border: solid 3px rgb(0, 255, 47); */
-
   }
   button.closeDiapo{
     width: auto; 
@@ -552,7 +541,6 @@ main {
     font-size: 20px;
     background-color: transparent;
     /* border: solid 3px rgb(0, 255, 47); */
-
 }
   .lightbox__div-image {
     width: auto; 
@@ -560,7 +548,6 @@ main {
     display: flex; 
     flex-direction: column;
     /* border: solid 3px rgb(0, 255, 0); */
-
 }
 .lightbox__name {
     width: auto; 
@@ -571,8 +558,6 @@ main {
     color: #901c1c;
     font-size: 14px;
     padding: 3px 0px 14px 6px;
-
-
 }
 /* @media screen and (max-width: 321px){
     .closeDiapo {

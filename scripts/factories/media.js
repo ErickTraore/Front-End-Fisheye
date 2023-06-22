@@ -30,15 +30,11 @@ function mediaFactory (photographerName, data, id) {
   function getUserMediaDOM () {
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
-
     var divPresent = document.createElement ('div');
 
     const a = picture_1;
     const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
-
-    // divPresent.setAttribute ('aria-pressed', "true"   );
-    // divPresent.setAttribute ('aria-describedby', 'ouvrir le slider');
 
     photographersMedia.appendChild (divPresent);
     var divAncre = document.createElement ('a');

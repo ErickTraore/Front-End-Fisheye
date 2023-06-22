@@ -1,6 +1,5 @@
 function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline , price } = data;
-
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
@@ -12,7 +11,6 @@ function photographerFactory(data) {
         h3.textContent = name;
 
         const article = document.createElement( 'article' );
-
         const ancre = document.createElement( 'a' );
 
         ancre.href = "photographer.html?id=" + id;
