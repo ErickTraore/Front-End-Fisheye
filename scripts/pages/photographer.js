@@ -293,29 +293,12 @@ async function init () {
           } 
 	}
 
-    // document.addEventListener('keydown', (evt) => {
-    //   event.preventDefault();    
-    //     // if(event.keyCode === 37) {
-    //     //   console.log('Je suis dans flêche gauche')
-    //     //   // selectleft ()
-    //     // }
-    //     // else {
-    //     //   console.log('Erreur photographer.js ligne 288')
-    //     // }
-    //     if(evt.keyCode == 39) {
-    //       console.log('Je suis dans flêche droite')
-    //       // selectright ()
-    //     } else {
-    //       console.log('Erreur photographer.js ligne 295')
-    //     }
-    
-    // })
-     
     // const mediaCard = media.querySelector ('.photographer__media__card');  
     const img = media.querySelector ('.photographer__media__card__img');
     const video = media.querySelector ('.photographer__media__card__img');
     const openModal = media.querySelector ('.js-modal');
-    const imgs = media.querySelectorAll ('.photographer__media__card__img')
+    // const imgs = media.querySelectorAll ('.photographer__media__card__img')
+    const imgs = media.querySelectorAll ('.photographer__media__card__img__media')
     
     imgs.forEach((image) => {
       image.addEventListener ('click', function(event) {
