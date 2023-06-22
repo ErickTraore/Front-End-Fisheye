@@ -146,6 +146,9 @@ async function init () {
       const image = tableMedia.image;
       const titre = tableMedia.title;
       const picture = `assets/images/samplePhotos/${mediaName}/${image}`;
+      const modifImage = image.replaceAll ('.jpg', '');
+      const picture_4 = `assets/images/samplePhotos/${mediaName}/${modifImage}`;
+
       testPicture = `http://127.0.0.1:5501/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
       const url = [`${image}`];
       const getFileExtension = url =>
@@ -189,21 +192,36 @@ async function init () {
       // divgauche.classList.add ('lightbox__div-gauche');
       // divNavigate.appendChild (divgauche);
       
+     
+      
+     
+
+
+      let divContent = document.createElement ('div');
+      divContent.classList.add ('lightbox__div-content');
+      divNavigate.appendChild (divContent);
+
+      let divContent2 = document.createElement ('div');
+      divContent2.classList.add ('lightbox__div-content2');
+      divNavigate.appendChild (divContent2);
+
       let divLeft = document.createElement ('a');
       divLeft.classList.add ('lightbox__nav__fleche-gauche');
       divLeft.setAttribute ('href', '#');
       divLeft.setAttribute ('tabindex', '0');
-      divNavigate.appendChild (divLeft);
+      divContent.appendChild (divLeft);
       divLeft.innerHTML = '\u3008 ';
+
 
       let divimage = document.createElement ('div');
       divimage.classList.add ('lightbox__div-image');
-      divNavigate.appendChild (divimage);
+      divContent.appendChild (divimage);
 
       if (isImage (type)) {
         let divImg = document.createElement ('img');
         divImg.classList.add ('lightbox__content__image');
-        divImg.setAttribute ('src', picture);
+        divImg.setAttribute ('src', picture_4 + `/ultra.jpg`);
+        divImg.setAttribute ('srcset', picture_4 + '/mobile.jpg 425w,' + picture_4 + '/tablette.jpg 768w,' + picture_4 + '/tabletteXl.jpg 1024w,' + picture_4 + '/desktop.jpg 1440w,' + picture_4 + '/ultra.jpg 2000w') 
         divImg.setAttribute ('alt', image);
         divimage.appendChild (divImg);
       }
@@ -222,16 +240,15 @@ async function init () {
       divimage.appendChild (divname);
       divname.innerHTML = titre;
 
-      let divRigth = document.createElement ('a');
-      divRigth.classList.add ('lightbox__nav__fleche-droite');
-      divRigth.setAttribute ('href', '#');
-      divRigth.setAttribute ('tabindex', '0');
-      divNavigate.appendChild (divRigth);
-      divRigth.innerHTML = '\u3009';
+     
 
       let divdroite = document.createElement ('div');
       divdroite.classList.add ('lightbox__div-droite');
-      divNavigate.appendChild (divdroite);
+      divContent.appendChild (divdroite);
+
+      let divImgAndArrow = document.createElement ('div');
+      divImgAndArrow.classList.add ('lightbox__div-imgAndArrow');
+      divdroite.appendChild (divImgAndArrow);
 
       let divClose = document.createElement ('button');
       divClose.setAttribute ('class', 'closeDiapo');
@@ -239,8 +256,15 @@ async function init () {
       divClose.setAttribute ('role', 'button');
       divClose.setAttribute ('role', 'button');
       divClose.setAttribute ('onclick', 'closeMediaModal()');
-      divdroite.appendChild (divClose);
+      divImgAndArrow.appendChild (divClose);
       divClose.innerHTML = 'X';
+
+      let divRigth = document.createElement ('a');
+      divRigth.classList.add ('lightbox__nav__fleche-droite');
+      divRigth.setAttribute ('href', '#');
+      divRigth.setAttribute ('tabindex', '0');
+      divdroite.appendChild (divRigth);
+      divRigth.innerHTML = '\u3009';
 
       const arrowleft = document.querySelector (
         '.lightbox__nav__fleche-gauche'
@@ -254,19 +278,38 @@ async function init () {
       arrowright.addEventListener ('click', () => {
         selectright ();
       });
-      document.addEventListener('keydown', (event) => {
-        if(lightboxmodal.style.display === "flex") {
-          if(event.keyCode == 37) {
-            console.log('Je suis dans flêche gauche')
-            selectleft()
-          }
-          if(event.keyCode == 39) {
-            console.log('Je suis dans flêche droite')
-            selectright()
-          }
-        }
-      })
+  
     }
+    document.onkeydown = function(event) {
+    // si appui sur une touche du clavier
+		// alert("code ASCII de la touche : " + event.keyCode) ; 
+     if(event.keyCode == 37) {
+          console.log('Je suis dans flêche gauche')
+          selectleft ()
+        }
+    if(event.keyCode == 39) {
+            console.log('Je suis dans flêche droite')
+            selectright ()
+          } 
+	}
+
+    // document.addEventListener('keydown', (evt) => {
+    //   event.preventDefault();    
+    //     // if(event.keyCode === 37) {
+    //     //   console.log('Je suis dans flêche gauche')
+    //     //   // selectleft ()
+    //     // }
+    //     // else {
+    //     //   console.log('Erreur photographer.js ligne 288')
+    //     // }
+    //     if(evt.keyCode == 39) {
+    //       console.log('Je suis dans flêche droite')
+    //       // selectright ()
+    //     } else {
+    //       console.log('Erreur photographer.js ligne 295')
+    //     }
+    
+    // })
      
     // const mediaCard = media.querySelector ('.photographer__media__card');  
     const img = media.querySelector ('.photographer__media__card__img');
@@ -328,13 +371,13 @@ async function init () {
       console.log (numLike);
     });
   
-  const focusInModal = function(e) {
-    e.preventDefault()
-    const divlightbox = document.querySelector(".lightbox__modal");
-    focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
+  // const focusInModal = function(e) {
+  //   e.preventDefault()
+  //   const divlightbox = document.querySelector(".lightbox__modal");
+  //   focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
   
-  console.log(focusables)
-  }
+  // console.log(focusables)
+  // }
 });
 
 

@@ -35,7 +35,6 @@ h1 {
     height: 50px; 
 }
 
-
 .photographer_section {
     width: 100%; 
     height: auto;
@@ -114,12 +113,11 @@ h1 {
         width: 50%; 
     }  
 }
-
 @media screen and (max-width: 600px){
     .photographer_section article {
         width: 100%; 
     }
-   
+
     header{
         flex-direction: column;
         height: 80px;

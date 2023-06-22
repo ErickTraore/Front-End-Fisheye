@@ -2,6 +2,7 @@
 <html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/indexLoader.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -10,24 +11,30 @@
     <meta name="description" content="Notre site permet aux photographes de mettre en ligne leur réalisation artistique"/>
   </head>
   <body>
-    <header>
-      <div class="header-top">
-        <a href="/index.html" title="recharger la page"  >
-          <img src="assets/images/logo.png" alt="logo" aria-labelledby="retour" class="logo"  />
-        </a>
-        <div class="accueil-title">
-          <h1>Nos photographes</h1>
-        </div>
-      </div>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js" type="module"></script>
-    <!-- Api -->
-    <script src="data/test-photographers.json"></script>
-    <script src="scripts/api/Api.js" type="module"></script>
-    <!-- Entry point -->
+    <div class="loader-container">
+      <div class="spinner"></div>
+    </div>
+    <div class="main-content">
+      <header>
+          <div class="header-top">
+            <a href="/index.html" title="recharger la page"  >
+              <img src="assets/images/logo.png" alt="logo" aria-labelledby="retour" class="logo"  />
+            </a>
+            <div class="accueil-title">
+              <h1>Nos photographes</h1>
+            </div>
+          </div>
+      </header>
+      <main id="main">
+            <div class="photographer_section"></div>
+      </main>
+    </div>
+      <script src="scripts/factories/photographer.js"></script>
+      <script src="scripts/pages/index.js" type="module"></script>
+      <script src="scripts/pages/indexLoader.js"></script>
+      <!-- Api -->
+      <script src="data/test-photographers.json"></script>
+      <script src="scripts/api/Api.js" type="module"></script>
+      <!-- Entry point -->
   </body>
 </html>

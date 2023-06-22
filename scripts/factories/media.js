@@ -7,12 +7,16 @@ function mediaFactory (photographerName, data, id) {
   const picture_1 = `assets/images/samplePhotos/${mediaName}/${image}`;
   const picture_2 = `assets/images/samplePhotos/${mediaName}`;
   const picture_3 = `assets/icons/vector.png`;
+  const modifImage = image.replaceAll ('.jpg', '');
+  const picture_4 = `assets/images/samplePhotos/${mediaName}/${modifImage}`;
 
   console.log (photographerName);
   console.log (mediaName);
   console.log (picture_1);
   console.log (picture_2);
   console.log (picture_3);
+  console.log (picture_4);
+  console.log (modifImage);
 
   const url = [`${image}`];
   const getFileExtension = url => `.${url.split ('?')[0].split ('.').pop ()}`;
@@ -20,7 +24,9 @@ function mediaFactory (photographerName, data, id) {
   console.log (photographerName);
   console.log (mediaName);
   console.log (image);
-
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('HTML prêt !');
+  });
   function getUserMediaDOM () {
     let counter = dataLikes;
     const photographersMedia = document.querySelector ('.photographer__media');
@@ -45,10 +51,10 @@ function mediaFactory (photographerName, data, id) {
     console.log (type);
     if (type === `.jpg`) {
       var img = document.createElement ('img');
-      img.setAttribute ('src', picture_1);
+      img.setAttribute ('src', picture_4 + `/ultra.jpg`);
+      img.setAttribute ('srcset', picture_4 + '/mobile.jpg 425w,' + picture_4 + '/tablette.jpg 768w,' + picture_4 + '/tabletteXl.jpg 1024w,' + picture_4 + '/desktop.jpg 1440w,' + picture_4 + '/ultra.jpg 2000w') 
       img.classList.add ('photographer__media__card__img');
       img.dataset.id = data.id;
-      // img.setAttribute ('role', "button");
       img.setAttribute ('alt', image);
       divAncre.appendChild (img);
     } else {
@@ -100,3 +106,5 @@ function mediaFactory (photographerName, data, id) {
     getUserMediaDOM,
   };
 }
+
+
