@@ -7,8 +7,9 @@ padding: 0;
     box-sizing: border-box;
 }
 *:focus {
-    box-shadow: 0 0 10px #D3573C;
+    box-shadow: 0 0 10px #433cd3;
 }
+
 .merci__modal {
     display: none;
     position: fixed;
@@ -20,16 +21,7 @@ padding: 0;
     overflow: auto;
     background-color: rgba(1, 2, 11, 0.4);
 }
-.photographer__media__card__title__icone__media,
-.icone-heart{
-    width: auto;
-    height: auto;
-    border: none;
-    background-color: transparent;
-    :hover {
-        transform:scale(1.30);
-    }
-}
+
 .btn-merci {
     width: auto;
     height: auto;
@@ -141,15 +133,15 @@ main {
     width: 100%;
     height: 100%;
     display: flex;
-    /* border: 3px solid #901C1C; */
 }
 .photographer-top {
     width: auto;
     height: auto;
     display: flex;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+
 }
 .photographerslogo{
     width: 20vw;
@@ -172,8 +164,6 @@ main {
     display: flex;
     align-items: center;
     margin: auto;
-    /* border: 3px solid #901C1C; */
-
 } 
  .photographer__profil__profile{
     width: 100%;
@@ -181,7 +171,6 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* background-color: white; */
 } 
  .photographer__profil__profile__presentation{
     width: 27%;
@@ -254,12 +243,18 @@ section{
     height: auto;
     display: flex;
 
+
 }
 section h3{
     width: auto;
     height: auto;
     display: flex;
     margin: 10px 10px;
+}
+.photographer{
+    width: auto;
+    height: auto;
+    background-color: #FFF;
 }
 .photographer__trier__select{
     width: 140px;
@@ -294,37 +289,42 @@ section h3{
 
 
 .photographer__media{
-    width: 90%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: auto;
+    margin: 50px auto;
+    /* border: 3px solid #1bd824; */
 
 } 
 .photographer__media__card{
-    width:  55vh;
-    height: 40vh;
+    width:  auto;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10px auto;
-    border-radius: 15px;
+    margin: 0px auto;
+    /* border: 3px solid #1bd824; */
+
 }
 .photographer__media__card__img__media{
-    width:  55vh;
-    height: 40vh;
+    width:  auto;
+    height: 20vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    margin: 0px auto;
-    /* border-radius: 15px; */
+    align-items: center;
+    margin: 0px 0px;
+    /* border: 3px solid #d8571b; */
+
 }
 .photographer__media__card__img{
-    width: 100%;
-    height: 90%;
+    width:  45vh;
+    height: 25vh;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
+    justify-content: center;
+    margin: auto auto;
     object-fit: cover;
     background-size:cover;
     border-radius: 15px 15px 0px 0px;
@@ -336,22 +336,28 @@ section h3{
     }
 
 .photographer__media__card__title{
-    width: 100%;
+    width:  45vh;
     height: 10%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 60px auto;
     border-radius: 0px 0px 15px 15px;
+    /* border: solid 3px rgb(60, 255, 0); */
+
 
 }
 .photographer__media__card__title__texte{
     width: 80%;
     height: 100%;
     display: flex;
-    margin: 10px 5px;
+    align-items: center;
+    margin: auto 10px;
     font-weight: 100;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 0px 0px 0px 15px;
     color: #901C1C;
+
 }
 .photographer__media__card__title__icone{
     width: 20%;
@@ -362,6 +368,16 @@ section h3{
     margin: 10px 5px;
     cursor : pointer;
     border-radius: 0px 0px 15px 0px;
+}
+.photographer__media__card__title__icone__media,
+.icone-heart{
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    :hover {
+        transform:scale(1.30);
+    }
 }
 .photographer__media__card__title__icone__number{
     width: 40%;
@@ -374,6 +390,7 @@ section h3{
     height: auto;
     margin: 10px;
     display: flex;
+
 }
 
 .modal-light {
@@ -399,7 +416,6 @@ section h3{
     height: 50vw;
     font-weight: 600; 
     font-size: 40px;
-    /* border: solid 3px rgb(60, 255, 0); */
 
 }
 
@@ -447,10 +463,7 @@ section h3{
 .lightbox__modal.active{
     display: flex;
 }
-.testeh3 {
-    position: absolute;
-    background-color: transparent;
-}
+
 .title{
     width: 100%;
     height: auto;

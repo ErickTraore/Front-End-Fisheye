@@ -113,18 +113,16 @@ select.addEventListener ('change', event => {
   tableMedias.sort (compareValues (value));
   document.querySelector ('.photographer__media').innerHTML = '';
   displayData (tableMedias);
-  
 });
-
  // Récupère les datas des photographes
  const {data} = await getData ();
  // Afichage des datas du photographe
  displayData (tableMedias);
-
 async function init () {
- 
   // Pour chaque media(carte), identifions le coeur(heart) et son nombre de like(like-number).
   const medias = document.querySelectorAll ('.photographer__media__card');
+  const mediasArray = [...medias];
+
   medias.forEach (media => {
   // const heart = media.querySelector ('.photographer__media__card__title__icone__heart');
   const hearted = media.querySelector ('.photographer__media__card__title__icone__media');
@@ -132,14 +130,6 @@ async function init () {
   
   const mediaName = photographerName.replaceAll (' ', '-');
 
-  function getIndex (id) {
-      console.log(id)
-      let index = tableMedias.findIndex((media) => {
-        return media.id == id
-      })
-      console.log(index)
-      return index
-    }
   function displayIndex (id) {
       let tableMedia = tableMedias[id];
       console.log(tableMedia);
@@ -166,7 +156,7 @@ async function init () {
       divNav.classList.add ('modal-light');
       divNav.setAttribute ('id', 'lightbox__nav');
       divNav.setAttribute ('aria-hidden', 'true');
-      divNav.setAttribute ('aria-labelledBy', 'texteh3');
+      // divNav.setAttribute ('aria-labelledBy', 'texteh3');
       divNav.setAttribute ('role', 'dialog');
       lightboxmodal.appendChild (divNav);
 
@@ -175,10 +165,9 @@ async function init () {
       divNav.appendChild (divWrapper);
       
       let divH3 = document.createElement ('h3');
-      divH3.setAttribute ('id', 'texteh3');
+      // divH3.setAttribute ('id', 'texteh3');
       divWrapper.appendChild (divH3);
       divH3.innerHTML = "";
-
       
       let divx = document.createElement ('div');
       divx.classList.add ('lightbox__close');
@@ -187,15 +176,6 @@ async function init () {
       let divNavigate = document.createElement ('div');
       divNavigate.classList.add ('lightbox__navigate');
       divWrapper.appendChild (divNavigate);
-      
-      // let divgauche = document.createElement ('div');
-      // divgauche.classList.add ('lightbox__div-gauche');
-      // divNavigate.appendChild (divgauche);
-      
-     
-      
-     
-
 
       let divContent = document.createElement ('div');
       divContent.classList.add ('lightbox__div-content');
@@ -292,28 +272,6 @@ async function init () {
             selectright ()
           } 
 	}
-
-    // const mediaCard = media.querySelector ('.photographer__media__card');  
-    const img = media.querySelector ('.photographer__media__card__img');
-    const video = media.querySelector ('.photographer__media__card__img');
-    const openModal = media.querySelector ('.js-modal');
-    // const imgs = media.querySelectorAll ('.photographer__media__card__img')
-    const imgs = media.querySelectorAll ('.photographer__media__card__img__media')
-    
-    imgs.forEach((image) => {
-      image.addEventListener ('click', function(event) {
-        console.log(event.target.dataset.id)
-        const idMedia = event.target.dataset.id
-        document.querySelector ('.lightbox__modal').innerHTML = '';
-        indexNum = getIndex (idMedia);
-        displayIndex (indexNum);
-        displayMediaModal ();
-        // getKeyOfLightbox();
-      });
-    })
-    // window.addEventListener('keydom', function(e){
-    //   console.log(e.key);
-    // })
   function selectleft () {
       if (indexNum === 0) {
         indexNum = tableMedias.length - 1;
@@ -337,7 +295,6 @@ async function init () {
       // getKeyOfLightbox()
     }
     let isLiked = false;
-
     hearted.addEventListener ('click', () => {
       let numLike = parseInt (like.textContent);
       if (!isLiked) {
@@ -353,17 +310,23 @@ async function init () {
       totalHtml.innerHTML = totalLikes;
       console.log (numLike);
     });
-  
-  // const focusInModal = function(e) {
-  //   e.preventDefault()
-  //   const divlightbox = document.querySelector(".lightbox__modal");
-  //   focusables = Array.from(divlightbox.querySelectorAll(focusableSelector));
-  
-  // console.log(focusables)
-  // }
+      // const img = media.querySelector ('.photographer__media__card__img');
+      const video = media.querySelector ('.photographer__media__card__img');
+      // const openModal = media.querySelector ('.js-modal');
+      const imgs = media.querySelectorAll ('.photographer__media__card__img')
+      const imgsArray = [...imgs];
+
+    mediasArray.forEach((item) => {
+    item.addEventListener("click", function () {
+    const index = Array.from(item.parentElement.children).indexOf(item);
+    document.querySelector ('.lightbox__modal').innerHTML = '';
+    let indexMedia  = index;
+    console.log(indexMedia);
+    displayIndex (indexMedia);
+    displayMediaModal ();
+    })
+  });
 });
 
-
 }
-
 export {tableMedias};

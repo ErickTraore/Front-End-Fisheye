@@ -32,27 +32,28 @@ function mediaFactory (photographerName, data, id) {
     const photographersMedia = document.querySelector ('.photographer__media');
     var divPresent = document.createElement ('div');
 
-    const a = picture_1;
-    const b = picture_2;
+    // const a = picture_1;
+    // const b = picture_2;
     divPresent.classList.add ('photographer__media__card');
 
     photographersMedia.appendChild (divPresent);
-    var divAncre = document.createElement ('a');
-    divAncre.classList.add ('photographer__media__card__img__media');
-    divAncre.setAttribute ('id', '#photographer__media__card__img');
-    divAncre.setAttribute ('href', '#photographer__media__card__img');
-    divAncre.classList.add ('js-modal');
-    divPresent.appendChild (divAncre);
+    var divAnc = document.createElement ('div');
+    divAnc.classList.add ('photographer__media__card__img__media');
+    divAnc.setAttribute ('aria-label', 'img-photo');
+    divAnc.setAttribute ('role', 'button');
+    divAnc.setAttribute ('tabindex', '0');
+    divAnc.classList.add ('js-modal');
+    divPresent.appendChild (divAnc);
 
     console.log (type);
     if (type === `.jpg`) {
       var img = document.createElement ('img');
       img.setAttribute ('src', picture_4 + `/ultra.jpg`);
-      img.setAttribute ('srcset', picture_4 + '/mobile.jpg 425w,' + picture_4 + '/tablette.jpg 768w,' + picture_4 + '/tabletteXl.jpg 1024w,' + picture_4 + '/desktop.jpg 1440w,' + picture_4 + '/ultra.jpg 2000w') 
+      // img.setAttribute ('srcset', picture_4 + '/mobile.jpg 425w,' + picture_4 + '/tablette.jpg 768w,' + picture_4 + '/tabletteXl.jpg 1024w,' + picture_4 + '/desktop.jpg 1440w,' + picture_4 + '/ultra.jpg 2000w') 
       img.classList.add ('photographer__media__card__img');
       img.dataset.id = data.id;
       img.setAttribute ('alt', image);
-      divAncre.appendChild (img);
+      divAnc.appendChild (img);
     } else {
       var video = document.createElement ('video');
       video.dataset.id = data.id;
@@ -61,7 +62,7 @@ function mediaFactory (photographerName, data, id) {
       video.setAttribute ('alt', 'video');
       video.setAttribute ('autoplay', '');
       video.setAttribute ('loop', '');
-      divAncre.appendChild (video);
+      divAnc.appendChild (video);
     }
     var divTitle = document.createElement ('div');
     divTitle.classList.add ('photographer__media__card__title');
