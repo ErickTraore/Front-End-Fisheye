@@ -1,4 +1,4 @@
-function mediaFactory (photographerName, data, id) {
+function mediaFactory (photographerName, data, index) {
   const image = data.image;
   const title = data.title;
   console.log (data);
@@ -37,11 +37,12 @@ function mediaFactory (photographerName, data, id) {
     divPresent.classList.add ('photographer__media__card');
 
     photographersMedia.appendChild (divPresent);
-    var divAnc = document.createElement ('div');
+    var divAnc = document.createElement ('button');
     divAnc.classList.add ('photographer__media__card__img__media');
     divAnc.setAttribute ('aria-label', 'img-photo');
     divAnc.setAttribute ('role', 'button');
     divAnc.setAttribute ('tabindex', '0');
+    divAnc.setAttribute ('data-index', index);
     divAnc.classList.add ('js-modal');
     divPresent.appendChild (divAnc);
 

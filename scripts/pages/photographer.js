@@ -2,11 +2,11 @@ import Api from '../api/Api.js';
 
 const tableMedias = [];
 // const lightboxcontent = document.querySelector ('#lightbox__content');
-let lightboxmodal = document.querySelector ('.lightbox__modal');
+const lightboxmodal = document.querySelector ('.lightbox__modal');
 let indexNum = 0;
 let totalLikes = 0;
-let numIndex = 0;
-let testPicture = '';
+// let numIndex = 0;
+// let testPicture = '';
 let photographerName = '';
 const totalHtml = document.querySelector ('.total-likes');
 
@@ -100,8 +100,8 @@ function compareValues (key, order = 'asc') {
 }
 // Afichage des données triées
 async function displayData (data) {
-  data.forEach (tableMedia => {
-    const mediaTitleModel = mediaFactory (photographerName, tableMedia, id);
+  data.forEach ((tableMedia, index) => {
+    const mediaTitleModel = mediaFactory (photographerName, tableMedia, index);
     mediaTitleModel.getUserMediaDOM (photographerName, tableMedia, totalLikes);
   });
   init ();
@@ -119,12 +119,10 @@ select.addEventListener ('change', event => {
  // Afichage des datas du photographe
  displayData (tableMedias);
 async function init () {
-  // Pour chaque media(carte), identifions le coeur(heart) et son nombre de like(like-number).
   const medias = document.querySelectorAll ('.photographer__media__card');
-  const mediasArray = [...medias];
+  const mediasArray = document.querySelectorAll('.photographer__media__card__img__media');
 
   medias.forEach (media => {
-  // const heart = media.querySelector ('.photographer__media__card__title__icone__heart');
   const hearted = media.querySelector ('.photographer__media__card__title__icone__media');
   const like = media.querySelector ('.photographer__media__card__title__icone__number');
   
@@ -139,13 +137,13 @@ async function init () {
       const modifImage = image.replaceAll ('.jpg', '');
       const picture_4 = `assets/images/samplePhotos/${mediaName}/${modifImage}`;
 
-      testPicture = `http://127.0.0.1:5501/Front-End-Fisheye/assets/images/samplePhotos/${mediaName}/${image}`;
       const url = [`${image}`];
       const getFileExtension = url =>
         `.${url.split ('?')[0].split ('.').pop ()}`;
       const type = getFileExtension (url[0]);
 
       let divIm = document.createElement ('div');
+
       // divIm.setAttribute ('href', '#lightbox__nav');
       divIm.classList.add ('lightbox__content');
       divIm.classList.add ('js-modal');
@@ -318,7 +316,7 @@ async function init () {
 
     mediasArray.forEach((item) => {
     item.addEventListener("click", function () {
-    const index = Array.from(item.parentElement.children).indexOf(item);
+    const index = item.dataset.index;
     document.querySelector ('.lightbox__modal').innerHTML = '';
     let indexMedia  = index;
     console.log(indexMedia);
