@@ -319,7 +319,7 @@ async function init () {
     const index = item.dataset.index;
     document.querySelector ('.lightbox__modal').innerHTML = '';
     let indexMedia  = index;
-    console.log(indexMedia);
+    indexNum = parseInt(index);
     displayIndex (indexMedia);
     displayMediaModal ();
     })

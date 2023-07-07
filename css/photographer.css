@@ -314,7 +314,7 @@ section h3{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px 0px;
+    margin: 0px 0px 0px 5px;
     background: transparent;
     border: none;
 }
@@ -354,7 +354,7 @@ section h3{
     align-items: center;
     margin: auto 10px;
     font-weight: 100;
-    font-size: 18px;
+    font-size: 14px;
     /* border-radius: 0px 0px 0px 15px; */
     color: #901C1C;
 
@@ -389,7 +389,7 @@ section h3{
 }
 .photographer__media__card__title__icone__number{
     width: 40%;
-    font-size: 20px;
+    font-size: 15px;
     height: auto;
     color: #901C1C;
 }
@@ -592,6 +592,13 @@ section h3{
     }
 } */
 @media screen and (max-width: 374px) and (min-width: 300px)  {
+
+element.style {
+}
+.photographer__profil__profile__image__img {
+  width: 24vw;
+  height: 24vw;
+}
     .closeDiapo {
         top: 45vw;
         right: 40vw;

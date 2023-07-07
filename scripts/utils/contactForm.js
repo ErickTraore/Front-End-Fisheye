@@ -24,20 +24,12 @@ const modalForm = document.getElementById("myForm");
 
 const focusableSelector = 'input, button, a'
 const modal = document.getElementById("contact__modal");
-console.log(modal);
 
 function focusInModalContact(e) {
   e.preventDefault();
-  console.log("1-test de 'focusInModalContact' ");
   const focusablesContact = Array.from(modal.querySelectorAll(focusableSelector));
-  console.log(focusablesContact);
   let index = focusablesContact.findIndex(f => f === modal.querySelector(':focus'));
-  console.log('1-index', index)
-  console.log('2-index', index)
-  console.log('focusables.length', focusablesContact.length)
-  console.log('focusables[index]', focusablesContact[index])
   let focusLength  = focusablesContact.length;
-
   focusFactory (index, e, focusablesContact, focusLength)
 
 }
@@ -56,7 +48,6 @@ modalForm.addEventListener('submit', addModal);
 function addModal(e) {   
    
     e.preventDefault();
-    console.log('Test du formulaire.')
     const formData = new FormData(myForm);
     const first = formData.get('first');
     const numberFirst = first.length;
@@ -114,9 +105,7 @@ function addModal(e) {
       var dataMessage = true;
       eltMessage.innerHTML = "";
     }
-    console.log('test général',dataFirst ,dataLast, dataEmail, dataMessage);
     if(dataFirst && dataLast && dataEmail && dataMessage) {
-    console.log('Vos données sont valid');
     console.log('data:', {first, last, email, message});
     const divMerci = document.querySelector(".merci__modal");
     modalForm.reset();
@@ -134,9 +123,6 @@ function addModal(e) {
       e.preventDefault();
       const focusablesMerci = Array.from(modal.querySelectorAll(focusableSelector));
       let index = focusablesMerci.findIndex(f => f === modal.querySelector(':focus'));
-      console.log('1-index', index)
-      console.log('focusables.length', focusablesMerci.length)
-      console.log('focusables[index]', focusablesMerci[index])
       let focusLength  = focusablesMerci.length;
 
       focusFactory (index, e, focusablesMerci, focusLength)
